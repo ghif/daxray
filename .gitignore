@@ -12,7 +12,10 @@ htmlcov/
 venv/
 
 # Generated experiment artifacts, local logs, and model outputs
-/artifacts/
+/artifacts/*
+!/artifacts/cxr_rait/
+/artifacts/cxr_rait/*
+!/artifacts/cxr_rait/*.json
 /checkpoints/
 /models/
 /data/

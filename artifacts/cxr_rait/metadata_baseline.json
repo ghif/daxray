@@ -1,0 +1,85 @@
+{
+  "model": "metadata_logistic_regression",
+  "features": [
+    "age_normalized",
+    "age_missing",
+    "gender_male",
+    "gender_female",
+    "gender_missing"
+  ],
+  "dataset": "cxr_rait",
+  "manifest": "artifacts/cxr_rait/split_manifest_seed7.json",
+  "dataset_fingerprint": "2ed6c96ef20c1746",
+  "hyperparameters": {
+    "epochs": 500,
+    "learning_rate": 0.1,
+    "l2_penalty": 0.001
+  },
+  "final_training_loss": 0.44626879692077637,
+  "metrics": {
+    "test": {
+      "count": 48,
+      "positive_count": 32,
+      "negative_count": 16,
+      "accuracy": 0.7708333333333334,
+      "balanced_accuracy": 0.65625,
+      "sensitivity": 1.0,
+      "specificity": 0.3125,
+      "precision": 0.7441860465116279,
+      "f1": 0.8533333333333333,
+      "auroc": 0.962890625,
+      "auprc": 0.9738363781507118,
+      "threshold": 0.5,
+      "true_positive": 32,
+      "true_negative": 5,
+      "false_positive": 11,
+      "false_negative": 0
+    },
+    "train": {
+      "count": 373,
+      "positive_count": 248,
+      "negative_count": 125,
+      "accuracy": 0.8176943699731903,
+      "balanced_accuracy": 0.728,
+      "sensitivity": 1.0,
+      "specificity": 0.456,
+      "precision": 0.7848101265822784,
+      "f1": 0.8794326241134751,
+      "auroc": 0.9746451612903225,
+      "auprc": 0.9811287733233676,
+      "threshold": 0.5,
+      "true_positive": 248,
+      "true_negative": 57,
+      "false_positive": 68,
+      "false_negative": 0
+    },
+    "validation": {
+      "count": 49,
+      "positive_count": 32,
+      "negative_count": 17,
+      "accuracy": 0.7551020408163265,
+      "balanced_accuracy": 0.6470588235294118,
+      "sensitivity": 1.0,
+      "specificity": 0.29411764705882354,
+      "precision": 0.7272727272727273,
+      "f1": 0.8421052631578948,
+      "auroc": 0.9650735294117647,
+      "auprc": 0.9738363781507118,
+      "threshold": 0.5,
+      "true_positive": 32,
+      "true_negative": 5,
+      "false_positive": 12,
+      "false_negative": 0
+    }
+  },
+  "parameters": {
+    "weights": [
+      2.4238178730010986,
+      0.0,
+      0.9631629586219788,
+      -0.9805157780647278,
+      0.0
+    ],
+    "bias": -0.008486693724989891
+  }
+}
