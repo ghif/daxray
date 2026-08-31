@@ -22,6 +22,7 @@ class RunLogger:
             raise ValueError("remote_sync_interval_epochs must be positive.")
         self.remote_sync_interval_epochs = remote_sync_interval_epochs
         self._last_sync_epoch: int | None = None
+        self.last_sync_seconds = 0.0
         self._remote = trainlog_path.startswith("gs://")
         self._temporary: tempfile.TemporaryDirectory[str] | None = None
         if self._remote:
@@ -92,6 +93,7 @@ class RunLogger:
         return f"{timestamp} INFO " + " ".join(fields)
 
     def _sync(self) -> None:
+        started = time.perf_counter()
         fs, root = fsspec.core.url_to_fs(self.trainlog_path)
         fs.makedirs(os.path.dirname(root), exist_ok=True)
         with self._local_log.open("rb") as source, fs.open(root, "wb") as target:
@@ -99,8 +101,9 @@ class RunLogger:
         tb_fs, tb_root = fsspec.core.url_to_fs(self.tensorboard_path)
         tb_fs.makedirs(tb_root, exist_ok=True)
         for path in self._local_tb.iterdir():
-            with path.open("rb") as source, tb_fs.open(f"{tb_root.rstrip('/')}/{path.name}", "wb") as target:
-                target.write(source.read())
+                with path.open("rb") as source, tb_fs.open(f"{tb_root.rstrip('/')}/{path.name}", "wb") as target:
+                    target.write(source.read())
+        self.last_sync_seconds = time.perf_counter() - started
 
     def close(self) -> None:
         try:

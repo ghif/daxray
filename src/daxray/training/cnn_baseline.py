@@ -24,12 +24,45 @@ from .checkpointing import TopKCheckpointManager
 from .logging import RunLogger
 
 
+@nnx.jit
+def _single_device_train_step(model: CxrSmallCNN, optimizer: nnx.Optimizer,
+                              images: jnp.ndarray, labels: jnp.ndarray,
+                              mask: jnp.ndarray) -> jnp.ndarray:
+    """JIT-compiled fixed-shape training step for CPU, GPU, and one TPU."""
+    def loss_fn(current_model: CxrSmallCNN) -> jnp.ndarray:
+        logits = current_model(images, training=True)
+        losses = binary_cross_entropy_with_logits(logits, labels)
+        return jnp.sum(losses * mask) / jnp.maximum(jnp.sum(mask), 1.0)
+
+    loss, gradients = nnx.value_and_grad(loss_fn)(model)
+    optimizer.update(model, gradients)
+    return loss
+
+
+@nnx.jit
+def _evaluation_step(model: CxrSmallCNN, images: jnp.ndarray) -> jnp.ndarray:
+    """JIT-compiled fixed-shape inference step."""
+    return model(images, training=False)
+
+
+def _pad_batch(images: np.ndarray, labels: np.ndarray, mask: np.ndarray, batch_size: int):
+    padding = batch_size - len(images)
+    if padding <= 0:
+        return images, labels, mask
+    return (
+        np.pad(images, ((0, padding), (0, 0), (0, 0), (0, 0))),
+        np.pad(labels, (0, padding), constant_values=-1),
+        np.pad(mask, (0, padding), constant_values=False),
+    )
+
+
 def train_cnn(
     model: CxrSmallCNN,
     optimizer: nnx.Optimizer,
     batches: Iterator[dict[str, Any]],
     *,
     devices: list[jax.Device] | None = None,
+    batch_size: int | None = None,
     progress_callback: Callable[[int, float, float], None] | None = None,
 ) -> float:
     """Run one epoch over NHWC batches and return mean training loss."""
@@ -38,19 +71,15 @@ def train_cnn(
     losses = []
     for batch_index, batch in enumerate(batches, start=1):
         batch_started = time.perf_counter()
-        images = jnp.asarray(batch["image"], dtype=jnp.float32)
-        mask = jnp.asarray(batch.get("label_mask", np.ones(len(batch["label"]), dtype=bool)))
-        labels = jnp.asarray(batch["label"], dtype=jnp.float32)
-        if not bool(np.any(np.asarray(mask))):
+        images_np = np.asarray(batch["image"], dtype=np.float32)
+        labels_np = np.asarray(batch["label"], dtype=np.float32)
+        mask_np = np.asarray(batch.get("label_mask", np.ones(len(labels_np), dtype=bool)), dtype=bool)
+        if not np.any(mask_np):
             continue
-        images = images[mask]
-        labels = labels[mask]
-
-        def loss_fn(current_model: CxrSmallCNN) -> jnp.ndarray:
-            return binary_cross_entropy_with_logits(current_model(images, training=True), labels)
-
-        loss, gradients = nnx.value_and_grad(loss_fn)(model)
-        optimizer.update(model, gradients)
+        images_np, labels_np, mask_np = _pad_batch(images_np, labels_np, mask_np, batch_size or len(images_np))
+        loss = _single_device_train_step(
+            model, optimizer, jnp.asarray(images_np), jnp.asarray(labels_np), jnp.asarray(mask_np, dtype=jnp.float32)
+        )
         loss_value = float(loss)
         losses.append(loss_value)
         if progress_callback is not None:
@@ -137,9 +166,13 @@ def _evaluate(model, records, patient_ids, config: CnnExperimentConfig,
         mask = np.asarray(batch["label_mask"], dtype=bool)
         if not np.any(mask):
             continue
-        logits = model(jnp.asarray(batch["image"]), training=False)
-        probabilities.extend(np.asarray(jax.nn.sigmoid(logits))[mask])
-        labels.extend(np.asarray(batch["label"])[mask])
+        batch_size = len(batch["image"])
+        batch_labels = np.asarray(batch["label"])
+        images = np.asarray(batch["image"], dtype=np.float32)
+        images, _, _ = _pad_batch(images, batch_labels, mask, config.batch_size)
+        logits = _evaluation_step(model, jnp.asarray(images))
+        probabilities.extend(np.asarray(jax.nn.sigmoid(logits))[:batch_size][mask])
+        labels.extend(batch_labels[mask])
     return classification_metrics(np.asarray(labels), np.asarray(probabilities))
 
 
@@ -253,12 +286,20 @@ def run_cnn_baseline(config: CnnExperimentConfig, *, resume: bool = False, dry_r
                 optimizer,
                 _batches(records, split["splits"]["train"], config, shuffle=True, seed=config.seed + epoch, cache=cache),
                 devices=devices,
+                batch_size=config.batch_size,
                 progress_callback=batch_progress,
             )
+            train_seconds = time.perf_counter() - epoch_t0
+            evaluation_started = time.perf_counter()
             training = _evaluate(model, records, split["splits"]["train"], config, cache)
+            training_evaluation_seconds = time.perf_counter() - evaluation_started
+            validation_started = time.perf_counter()
             validation = _evaluate(model, records, split["splits"]["validation"], config, cache)
+            validation_seconds = time.perf_counter() - validation_started
+            checkpoint_started = time.perf_counter()
             state = {"model": nnx.state(model), "optimizer": nnx.state(optimizer), "epoch": epoch, "rng": {"seed": config.seed}}
             saved = manager.save(epoch, state, float(validation["auroc"]))
+            checkpoint_stage_seconds = time.perf_counter() - checkpoint_started
             checkpoint_scores[epoch] = float(validation["auroc"])
             retained_steps = [step for step, _ in sorted(
                 checkpoint_scores.items(), key=lambda item: (item[1], item[0]), reverse=True
@@ -270,6 +311,9 @@ def run_cnn_baseline(config: CnnExperimentConfig, *, resume: bool = False, dry_r
                      "validation_accuracy": validation["accuracy"], "validation_f1": validation["f1"],
                      "validation_sensitivity": validation["sensitivity"], "validation_specificity": validation["specificity"],
                      "learning_rate": config.learning_rate, "checkpoint_saved": saved,
+                     "train_seconds": train_seconds, "training_evaluation_seconds": training_evaluation_seconds,
+                     "validation_seconds": validation_seconds, "checkpoint_stage_seconds": checkpoint_stage_seconds,
+                     "checkpoint_upload_pending": config.run_directory.startswith("gs://"),
                      "samples_per_epoch": samples_per_epoch,
                      "retained_checkpoint_steps": sorted(retained_steps),
                      "retained_checkpoint_count": len(retained_steps),
