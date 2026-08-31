@@ -6,7 +6,7 @@ from typing import Any, Iterator, Mapping, Sequence
 
 import numpy as np
 
-from .dicom import load_cxr_image
+from .dicom import PreprocessingCache, load_cxr_image
 
 
 def iter_batches(
@@ -21,6 +21,7 @@ def iter_batches(
     drop_remainder: bool = False,
     as_jax: bool = False,
     layout: str = "NCHW",
+    cache: PreprocessingCache | None = None,
 ) -> Iterator[dict[str, Any]]:
     """Yield ``(N, 1, H, W)`` image batches and optional labels.
 
@@ -43,7 +44,7 @@ def iter_batches(
         batch_records = [selected[index] for index in order[start : start + batch_size]]
         if len(batch_records) < batch_size and drop_remainder:
             continue
-        images = np.stack([load_cxr_image(record["image_path"], image_size, resize_mode) for record in batch_records])
+        images = np.stack([load_cxr_image(record["image_path"], image_size, resize_mode, cache=cache) for record in batch_records])
         if layout == "NHWC":
             images = np.moveaxis(images, 1, -1)
         label_mask = np.asarray([record.get("label") is not None for record in batch_records], dtype=bool)

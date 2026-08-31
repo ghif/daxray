@@ -1,8 +1,9 @@
 import jax.numpy as jnp
 import numpy as np
+import pytest
 from flax import nnx
 
-from daxray.models import CxrSmallCNN, model_parameter_count
+from daxray.models import CxrSmallCNN, compute_dtype_for_precision, model_parameter_count
 from daxray.training.cnn_baseline import create_cnn_optimizer, train_cnn
 
 
@@ -33,3 +34,21 @@ def test_cnn_training_reduces_loss_on_simple_signal():
     assert last_loss < first_loss
     assert progress and progress[0][0] == 1
     assert progress[0][1] == first_loss
+
+
+def test_bfloat16_model_uses_bfloat16_compute_and_float32_parameters():
+    model = CxrSmallCNN(rngs=nnx.Rngs(3), dtype=jnp.bfloat16)
+    output = model(jnp.ones((2, 32, 32, 1), dtype=jnp.float32))
+
+    assert output.dtype == jnp.bfloat16
+    assert model.block1.conv.kernel.get_value().dtype == jnp.float32
+
+
+@pytest.mark.parametrize("precision, expected", [("fp32", jnp.float32), ("bf16", jnp.bfloat16)])
+def test_compute_dtype_for_precision(precision, expected):
+    assert compute_dtype_for_precision(precision) == expected
+
+
+def test_compute_dtype_for_precision_rejects_unknown_precision():
+    with pytest.raises(ValueError, match="precision must be"):
+        compute_dtype_for_precision("fp16")

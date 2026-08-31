@@ -52,11 +52,12 @@ class TopKCheckpointManager:
             metrics={"validation_auroc": float(auroc), "selection_score": float(auroc) + step * 1e-12},
         ))
 
-    def restore(self, step: int | None = None) -> dict[str, Any] | None:
+    def restore(self, step: int | None = None, *, target: Mapping[str, Any] | None = None) -> dict[str, Any] | None:
         selected = self.latest_step if step is None else step
         if selected is None:
             return None
-        return dict(self._manager.restore(selected, args=ocp.args.StandardRestore()))
+        restore_args = ocp.args.StandardRestore(target) if target is not None else ocp.args.StandardRestore()
+        return dict(self._manager.restore(selected, args=restore_args))
 
     def retained(self) -> list[RetainedCheckpoint]:
         result = []

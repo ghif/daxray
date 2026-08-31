@@ -1,10 +1,13 @@
 import numpy as np
+import jax.numpy as jnp
+from flax import nnx
 
 from daxray.config import ArtifactsConfig, CnnExperimentConfig, load_cnn_config
 from daxray.training.checkpointing import TopKCheckpointManager
 from daxray.training.logging import RunLogger
 from daxray.training import cnn_baseline
 from daxray.runtime import RuntimeSummary
+from daxray.models import CxrSmallCNN
 
 
 def test_config_loads_and_resolves_named_run(tmp_path):
@@ -32,6 +35,19 @@ def test_checkpoint_manager_retains_top_three_and_restores_best(tmp_path):
     assert [item.step for item in manager.retained()] == [2, 3, 4]
     assert manager.best_step == 2
     assert manager.restore(manager.best_step)["epoch"] == 2
+    manager.close()
+
+
+def test_checkpoint_manager_restores_nnx_state_with_target(tmp_path):
+    model = CxrSmallCNN(rngs=nnx.Rngs(0))
+    manager = TopKCheckpointManager(str(tmp_path), keep_top_k=1)
+    manager.save(1, {"model": nnx.state(model), "epoch": 1, "rng": {"seed": 0}}, 0.5)
+
+    restored = manager.restore(target={"model": nnx.state(model), "epoch": 0, "rng": {"seed": 0}})
+    restored_model = CxrSmallCNN(rngs=nnx.Rngs(1))
+    nnx.update(restored_model, restored["model"])
+
+    assert restored_model(jnp.ones((1, 32, 32, 1))).shape == (1,)
     manager.close()
 
 

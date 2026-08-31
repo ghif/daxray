@@ -1,8 +1,9 @@
 import numpy as np
+from pathlib import Path
 from pydicom.dataset import FileDataset, FileMetaDataset
 from pydicom.uid import ExplicitVRLittleEndian, SecondaryCaptureImageStorage, generate_uid
 
-from daxray.data import audit_manifest, iter_batches, load_cxr_image
+from daxray.data import PreprocessingCache, audit_manifest, iter_batches, load_cxr_image
 
 
 def _write_dicom(path, values, photometric="MONOCHROME2"):
@@ -48,6 +49,35 @@ def test_batching_supports_unlabeled_records(tmp_path):
     assert batch["image"].shape == (1, 1, 2, 2)
     assert batch["label"].tolist() == [-1]
     assert batch["label_mask"].tolist() == [False]
+
+
+def test_memory_cache_reuses_preprocessed_image_and_respects_preprocessing_key(tmp_path):
+    path = tmp_path / "P001.dcm"
+    _write_dicom(path, np.arange(4).reshape(2, 2))
+    cache = PreprocessingCache(mode="memory", max_bytes=1024)
+
+    first = load_cxr_image(path, image_size=2, resize_mode="stretch", cache=cache)
+    second = load_cxr_image(path, image_size=2, resize_mode="stretch", cache=cache)
+    other_size = load_cxr_image(path, image_size=3, resize_mode="stretch", cache=cache)
+
+    assert np.array_equal(first, second)
+    assert other_size.shape == (1, 3, 3)
+    assert cache.stats.hits == 1
+    assert cache.stats.misses == 2
+    cache.close()
+
+
+def test_cache_eviction_and_ephemeral_cleanup(tmp_path):
+    path = tmp_path / "P001.dcm"
+    _write_dicom(path, np.arange(4).reshape(2, 2))
+    cache = PreprocessingCache(mode="ephemeral", max_bytes=40)
+    load_cxr_image(path, image_size=2, resize_mode="stretch", cache=cache)
+    temporary_path = Path(cache._temporary.name)
+    assert any(temporary_path.iterdir())
+    load_cxr_image(path, image_size=3, resize_mode="stretch", cache=cache)
+    assert cache.stats.evictions == 1
+    cache.close()
+    assert not temporary_path.exists()
 
 
 def test_manifest_audit_reports_missing_data(tmp_path):

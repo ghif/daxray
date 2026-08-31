@@ -16,9 +16,9 @@ from flax import nnx
 import yaml
 
 from daxray.config import CnnExperimentConfig
-from daxray.data import build_cxr_rait_manifest, iter_batches, load_split_manifest
+from daxray.data import PreprocessingCache, build_cxr_rait_manifest, iter_batches, load_split_manifest
 from daxray.evaluation.metrics import classification_metrics
-from daxray.models.cnn import CxrSmallCNN, binary_cross_entropy_with_logits
+from daxray.models.cnn import CxrSmallCNN, binary_cross_entropy_with_logits, compute_dtype_for_precision
 from daxray.runtime import validate_backend
 from .checkpointing import TopKCheckpointManager
 from .logging import RunLogger
@@ -123,15 +123,17 @@ def create_cnn_optimizer(model: CxrSmallCNN, learning_rate: float = 1e-3, weight
     return nnx.Optimizer(model, optax.adamw(learning_rate, weight_decay=weight_decay), wrt=nnx.Param)
 
 
-def _batches(records, patient_ids, config: CnnExperimentConfig, *, shuffle: bool, seed: int):
+def _batches(records, patient_ids, config: CnnExperimentConfig, *, shuffle: bool, seed: int,
+             cache: PreprocessingCache | None = None):
     return iter_batches(records, patient_ids, batch_size=config.batch_size, image_size=config.image_size,
-                        resize_mode=config.resize_mode, shuffle=shuffle, seed=seed, layout="NHWC")
+                        resize_mode=config.resize_mode, shuffle=shuffle, seed=seed, layout="NHWC", cache=cache)
 
 
-def _evaluate(model, records, patient_ids, config: CnnExperimentConfig) -> dict[str, float | int]:
+def _evaluate(model, records, patient_ids, config: CnnExperimentConfig,
+              cache: PreprocessingCache | None = None) -> dict[str, float | int]:
     model.eval()
     probabilities, labels = [], []
-    for batch in _batches(records, patient_ids, config, shuffle=False, seed=config.seed):
+    for batch in _batches(records, patient_ids, config, shuffle=False, seed=config.seed, cache=cache):
         mask = np.asarray(batch["label_mask"], dtype=bool)
         if not np.any(mask):
             continue
@@ -147,7 +149,17 @@ def _write_text(path: str, content: str) -> None:
     if parent:
         fs.makedirs(parent, exist_ok=True)
     with fs.open(name, "w", encoding="utf-8") as handle:
-        handle.write(content)
+            handle.write(content)
+
+
+def _checkpoint_target(model: CxrSmallCNN, optimizer: nnx.Optimizer, seed: int) -> dict[str, Any]:
+    """Build the NNX-shaped target needed to restore Orbax checkpoint state."""
+    return {
+        "model": nnx.state(model),
+        "optimizer": nnx.state(optimizer),
+        "epoch": 0,
+        "rng": {"seed": seed},
+    }
 
 
 def run_cnn_baseline(config: CnnExperimentConfig, *, resume: bool = False, dry_run: bool = False) -> dict[str, Any]:
@@ -160,6 +172,7 @@ def run_cnn_baseline(config: CnnExperimentConfig, *, resume: bool = False, dry_r
     _write_text(config.artifact_path("config.yaml"), yaml.safe_dump(config.to_dict(), sort_keys=False))
     logger = RunLogger(config.artifact_path("trainlog.txt"), config.artifact_path("tensorboard"))
     manager = TopKCheckpointManager(config.run_directory, keep_top_k=config.checkpoint_keep_top_k)
+    cache = PreprocessingCache(config.dataset.cache.mode, config.dataset.cache.max_bytes)
     try:
         runtime = validate_backend(config.runtime.accelerator)
         if config.runtime.execution_mode == "single_device":
@@ -180,11 +193,15 @@ def run_cnn_baseline(config: CnnExperimentConfig, *, resume: bool = False, dry_r
         logger.log({"event": "dataset_loaded", "records": len(records),
                     "train_records": len(split["splits"]["train"]), "validation_records": len(split["splits"]["validation"]),
                     "test_records": len(split["splits"]["test"]), "dataset_fingerprint": split.get("dataset_fingerprint")})
-        model = CxrSmallCNN(rngs=nnx.Rngs(config.seed), dropout_rate=config.dropout_rate)
+        model = CxrSmallCNN(
+            rngs=nnx.Rngs(config.seed),
+            dropout_rate=config.dropout_rate,
+            dtype=compute_dtype_for_precision(config.runtime.precision),
+        )
         optimizer = create_cnn_optimizer(model, config.learning_rate, config.weight_decay)
         start_epoch = 0
         if resume:
-            restored = manager.restore()
+            restored = manager.restore(target=_checkpoint_target(model, optimizer, config.seed))
             if restored is not None:
                 nnx.update(model, restored["model"])
                 nnx.update(optimizer, restored["optimizer"])
@@ -224,11 +241,11 @@ def run_cnn_baseline(config: CnnExperimentConfig, *, resume: bool = False, dry_r
             loss = train_cnn(
                 model,
                 optimizer,
-                _batches(records, split["splits"]["train"], config, shuffle=True, seed=config.seed + epoch),
+                _batches(records, split["splits"]["train"], config, shuffle=True, seed=config.seed + epoch, cache=cache),
                 devices=devices,
                 progress_callback=batch_progress,
             )
-            validation = _evaluate(model, records, split["splits"]["validation"], config)
+            validation = _evaluate(model, records, split["splits"]["validation"], config, cache)
             state = {"model": nnx.state(model), "optimizer": nnx.state(optimizer), "epoch": epoch, "rng": {"seed": config.seed}}
             saved = manager.save(epoch, state, float(validation["auroc"]))
             retained = manager.retained()
@@ -243,20 +260,23 @@ def run_cnn_baseline(config: CnnExperimentConfig, *, resume: bool = False, dry_r
                      "best_validation_auroc": max((item.auroc for item in retained), default=float("nan")),
                      "epoch_seconds": (datetime.now(timezone.utc) - started).total_seconds()}
             event["epoch_samples_per_sec"] = samples_per_epoch / max(event["epoch_seconds"], 1e-12)
+            event.update({f"data/{key}": value for key, value in cache.stats.as_dict().items()})
             logger.log(event)
             history.append({"epoch": epoch, "train_loss": loss, "validation": validation})
         best_step = manager.best_step
         if best_step is not None:
-            best_state = manager.restore(best_step)
+            best_state = manager.restore(
+                best_step, target=_checkpoint_target(model, optimizer, config.seed)
+            )
             nnx.update(model, best_state["model"])
-        metrics = {name: _evaluate(model, records, ids, config) for name, ids in split["splits"].items()}
+        metrics = {name: _evaluate(model, records, ids, config, cache) for name, ids in split["splits"].items()}
         retained = manager.retained()
         result = {"model": "cxr_small_cnn", "dataset": "cxr_rait", "checkpoint_name": config.checkpoint_name,
                   "run_directory": config.run_directory, "best_checkpoint_step": best_step,
                   "retained_checkpoints": [item.__dict__ for item in retained], "manifest": config.split_manifest,
                   "dataset_fingerprint": split.get("dataset_fingerprint"), "runtime": runtime.__dict__, "resolved_config": config.to_dict(),
                   "artifacts": {"checkpoint_root": "orbax", "training_log": "trainlog.txt", "tensorboard": "tensorboard", "config": "config.yaml", "results": "results.json"},
-                  "metrics": metrics, "history": history}
+                  "metrics": metrics, "history": history, "cache": cache.stats.as_dict()}
         _write_text(config.artifact_path("results.json"), json.dumps(result, indent=2, allow_nan=True, default=str))
         logger.log({"event": "training_completed", "best_checkpoint_step": best_step,
                     "retained_checkpoint_steps": [item.step for item in retained], "results": config.artifact_path("results.json")})
@@ -264,6 +284,7 @@ def run_cnn_baseline(config: CnnExperimentConfig, *, resume: bool = False, dry_r
     finally:
         manager.close()
         logger.close()
+        cache.close()
 
 
 def _run_dry_run(config: CnnExperimentConfig) -> dict[str, Any]:
@@ -277,10 +298,15 @@ def _run_dry_run(config: CnnExperimentConfig) -> dict[str, Any]:
     print("dry_run_loading_manifest", flush=True)
     records = build_cxr_rait_manifest(config.dataset_root)
     split = load_split_manifest(config.split_manifest)
-    model = CxrSmallCNN(rngs=nnx.Rngs(config.seed), dropout_rate=config.dropout_rate)
+    model = CxrSmallCNN(
+        rngs=nnx.Rngs(config.seed),
+        dropout_rate=config.dropout_rate,
+        dtype=compute_dtype_for_precision(config.runtime.precision),
+    )
     optimizer = create_cnn_optimizer(model, config.learning_rate, config.weight_decay)
+    cache = PreprocessingCache(config.dataset.cache.mode, config.dataset.cache.max_bytes)
     print("dry_run_loading_first_batch", flush=True)
-    batches = _batches(records, split["splits"]["train"], config, shuffle=False, seed=config.seed)
+    batches = _batches(records, split["splits"]["train"], config, shuffle=False, seed=config.seed, cache=cache)
 
     def dry_run_progress(batch_index: int, batch_loss: float, batch_seconds: float) -> None:
         iter_per_sec = 1.0 / max(batch_seconds, 1e-12)
@@ -296,13 +322,18 @@ def _run_dry_run(config: CnnExperimentConfig) -> dict[str, Any]:
             flush=True,
         )
 
-    train_cnn(
-        model,
-        optimizer,
-        iter([next(batches)]),
-        devices=devices,
-        progress_callback=dry_run_progress,
-    )
-    print("dry_run_completed", flush=True)
-    return {"dry_run": True, "runtime": runtime.__dict__, "records": len(records),
-            "train_records": len(split["splits"]["train"]), "run_directory": config.run_directory}
+    try:
+        train_cnn(
+            model,
+            optimizer,
+            iter([next(batches)]),
+            devices=devices,
+            progress_callback=dry_run_progress,
+        )
+        print("dry_run_cache " + " ".join(f"{key}={value}" for key, value in cache.stats.as_dict().items()), flush=True)
+        print("dry_run_completed", flush=True)
+        return {"dry_run": True, "runtime": runtime.__dict__, "records": len(records),
+                "train_records": len(split["splits"]["train"]), "run_directory": config.run_directory,
+                "cache": cache.stats.as_dict()}
+    finally:
+        cache.close()

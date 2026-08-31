@@ -38,6 +38,25 @@ Install the package with its metadata and JAX extras:
 conda run -n med-jax python -m pip install -r requirements.txt
 ```
 
+For a Google Cloud TPU VM, use the TPU-specific requirements file instead:
+
+```bash
+python3 -m pip install --upgrade pip
+python3 -m pip install -r requirements-tpu.txt
+```
+
+The file installs the Google TPU JAX extra and the matching `libtpu` wheel
+source. For a multi-VM TPU slice, install it on every worker (for example with
+`gcloud compute tpus tpu-vm ssh --worker=all`). Verify the installation before
+training:
+
+```bash
+python3 -c "import jax; print(jax.default_backend()); print(jax.devices())"
+```
+
+The expected backend is `tpu`. The standard `requirements.txt` remains the
+local CPU/GPU development environment.
+
 Build a patient-level manifest from the authoritative CXR-RAIT GCS location:
 
 ```python
@@ -133,6 +152,14 @@ The grid is saved locally and includes the patient ID, TB label, and label
 availability for each image. The source images are always read from
 `gs://cxr-rait/cxr-demography-data`; the output path must remain outside the
 read-only dataset bucket.
+
+Training uses a bounded per-process preprocessing cache by default. DICOM
+bytes are read and decoded in memory, then the normalized resized tensor is
+cached for reuse across epochs. No raw DICOM files or persistent cache files
+are written to the local drive. Configure this under `dataset.cache` with
+`mode: memory`, `mode: none`, or the cleaned-up `mode: ephemeral` fallback;
+`max_bytes` limits cache usage. Cache hit rate, read/preprocessing time, and
+evictions are printed in the progress log and recorded in TensorBoard.
 
 Train the first learned sanity-check baseline using metadata only:
 

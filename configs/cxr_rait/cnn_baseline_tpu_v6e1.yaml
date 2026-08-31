@@ -1,3 +1,5 @@
+# Single-host TPU v6e-1 configuration for the CXR-RAIT image baseline.
+# The batch size is the global batch size for this one-device run.
 version: "1"
 seed: 7
 dataset:
@@ -8,7 +10,7 @@ dataset:
   resize_mode: pad
   cache:
     mode: memory
-    max_bytes: 1073741824
+    max_bytes: 2147483648
 model:
   name: cxr_small_cnn
   dropout_rate: 0.2
@@ -16,14 +18,14 @@ optimizer:
   name: adamw
   lr: 0.001
   weight_decay: 0.0001
-  batch_size: 16
+  batch_size: 64
 runtime:
-  accelerator: cpu
-  precision: fp32
-  execution_mode: auto
+  accelerator: tpu
+  precision: bf16
+  execution_mode: single_device
 artifacts:
   root: checkpoints
-  run_name: cnn_baseline_cpu_31-08-2026
+  run_name: cnn_baseline_tpu_v6e1_128px_seed7
   remote_root: gs://cxr-rait/checkpoints/classifier
   checkpoint_keep_top_k: 3
   checkpoint_metric: validation.auroc

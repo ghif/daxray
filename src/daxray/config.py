@@ -10,12 +10,19 @@ import yaml
 
 
 @dataclass(frozen=True)
+class DatasetCacheConfig:
+    mode: str = "memory"
+    max_bytes: int = 1_073_741_824
+
+
+@dataclass(frozen=True)
 class DatasetConfig:
     name: str = "cxr_rait"
     root: str = "gs://cxr-rait/cxr-demography-data"
     split_manifest: str = "artifacts/cxr_rait/split_manifest_seed7.json"
     input_res: int = 128
     resize_mode: str = "pad"
+    cache: DatasetCacheConfig = DatasetCacheConfig()
 
 
 @dataclass(frozen=True)
@@ -61,7 +68,7 @@ class WorkflowConfig:
 class CnnExperimentConfig:
     version: str = "1"
     seed: int = 7
-    dataset: DatasetConfig = DatasetConfig()
+    dataset: DatasetConfig = DatasetConfig(cache=DatasetCacheConfig())
     model: ModelConfig = ModelConfig()
     optimizer: OptimizerConfig = OptimizerConfig()
     runtime: RuntimeConfig = RuntimeConfig()
@@ -81,8 +88,14 @@ class CnnExperimentConfig:
             raise ValueError("model.dropout_rate must be in [0, 1).")
         if self.dataset.resize_mode not in {"pad", "stretch"}:
             raise ValueError("dataset.resize_mode must be 'pad' or 'stretch'.")
+        if self.dataset.cache.mode not in {"none", "memory", "ephemeral"}:
+            raise ValueError("dataset.cache.mode must be none, memory, or ephemeral.")
+        if self.dataset.cache.max_bytes <= 0:
+            raise ValueError("dataset.cache.max_bytes must be positive.")
         if self.runtime.accelerator not in {"cpu", "gpu", "cuda", "tpu"}:
             raise ValueError("runtime.accelerator must be cpu, gpu, or tpu.")
+        if self.runtime.precision not in {"fp32", "bf16"}:
+            raise ValueError("runtime.precision must be fp32 or bf16.")
         if self.runtime.execution_mode not in {"auto", "single_device", "multi_device"}:
             raise ValueError("runtime.execution_mode must be auto, single_device, or multi_device.")
         if self.artifacts.checkpoint_keep_top_k <= 0:
@@ -165,10 +178,11 @@ def load_cnn_config(path: str | Path, overrides: Mapping[str, Any] | None = None
         artifacts["run_name"] = overrides["checkpoint_name"]
         values["artifacts"] = artifacts
     sections = {name: dict(values.get(name) or {}) for name in ("dataset", "model", "optimizer", "runtime", "artifacts", "workflow")}
+    dataset_cache = DatasetCacheConfig(**dict(sections["dataset"].pop("cache", {}) or {}))
     return CnnExperimentConfig(
         version=str(values.get("version", "1")),
         seed=int(values.get("seed", 7)),
-        dataset=DatasetConfig(**sections["dataset"]),
+        dataset=DatasetConfig(cache=dataset_cache, **sections["dataset"]),
         model=ModelConfig(**sections["model"]),
         optimizer=OptimizerConfig(**sections["optimizer"]),
         runtime=RuntimeConfig(**sections["runtime"]),
