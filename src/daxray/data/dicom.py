@@ -7,8 +7,10 @@ import os
 import tempfile
 import time
 from collections import OrderedDict
+from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass
 from pathlib import Path
+from threading import RLock
 from typing import Any
 
 import numpy as np
@@ -49,6 +51,7 @@ class PreprocessingCache:
         self.mode = mode
         self.max_bytes = max_bytes
         self.stats = CacheStats()
+        self._lock = RLock()
         self._entries: OrderedDict[tuple[Any, ...], tuple[np.ndarray | Path, int]] = OrderedDict()
         self._counter = 0
         self._temporary = tempfile.TemporaryDirectory(prefix="daxray-preprocess-") if mode == "ephemeral" else None
@@ -56,45 +59,56 @@ class PreprocessingCache:
     def get(self, key: tuple[Any, ...]) -> np.ndarray | None:
         if self.mode == "none":
             return None
-        entry = self._entries.get(key)
-        if entry is None:
-            self.stats.misses += 1
-            return None
-        value, _ = entry
-        self._entries.move_to_end(key)
-        self.stats.hits += 1
+        with self._lock:
+            entry = self._entries.get(key)
+            if entry is None:
+                self.stats.misses += 1
+                return None
+            value, _ = entry
+            self._entries.move_to_end(key)
+            self.stats.hits += 1
         return np.load(value, allow_pickle=False) if isinstance(value, Path) else value
 
     def put(self, key: tuple[Any, ...], image: np.ndarray) -> None:
         if self.mode == "none" or image.nbytes > self.max_bytes:
             return
         image = np.asarray(image, dtype=np.float32).copy()
-        old = self._entries.pop(key, None)
-        if old is not None:
-            self.stats.cached_bytes -= old[1]
-            if isinstance(old[0], Path):
-                old[0].unlink(missing_ok=True)
-        value: np.ndarray | Path = image
-        if self.mode == "ephemeral":
-            path = Path(self._temporary.name) / f"{self._counter}.npy"
-            self._counter += 1
-            np.save(path, image, allow_pickle=False)
-            value = path
-        self._entries[key] = (value, image.nbytes)
-        self.stats.cached_bytes += image.nbytes
-        while self.stats.cached_bytes > self.max_bytes and self._entries:
-            _, (evicted, size) = self._entries.popitem(last=False)
-            self.stats.cached_bytes -= size
-            self.stats.evictions += 1
-            if isinstance(evicted, Path):
-                evicted.unlink(missing_ok=True)
+        with self._lock:
+            old = self._entries.pop(key, None)
+            if old is not None:
+                self.stats.cached_bytes -= old[1]
+                if isinstance(old[0], Path):
+                    old[0].unlink(missing_ok=True)
+            value: np.ndarray | Path = image
+            if self.mode == "ephemeral":
+                path = Path(self._temporary.name) / f"{self._counter}.npy"
+                self._counter += 1
+                np.save(path, image, allow_pickle=False)
+                value = path
+            self._entries[key] = (value, image.nbytes)
+            self.stats.cached_bytes += image.nbytes
+            while self.stats.cached_bytes > self.max_bytes and self._entries:
+                _, (evicted, size) = self._entries.popitem(last=False)
+                self.stats.cached_bytes -= size
+                self.stats.evictions += 1
+                if isinstance(evicted, Path):
+                    evicted.unlink(missing_ok=True)
 
     def close(self) -> None:
-        self._entries.clear()
-        self.stats.cached_bytes = 0
+        with self._lock:
+            self._entries.clear()
+            self.stats.cached_bytes = 0
         if self._temporary is not None:
             self._temporary.cleanup()
             self._temporary = None
+
+    def prewarm(self, paths: list[str | Path], image_size: int, resize_mode: str, *, read_workers: int = 8) -> None:
+        """Preprocess unique source images concurrently into this cache."""
+        if self.mode == "none":
+            return
+        unique_paths = list(dict.fromkeys(str(path) for path in paths))
+        with ThreadPoolExecutor(max_workers=read_workers, thread_name_prefix="daxray-dicom") as executor:
+            list(executor.map(lambda path: load_cxr_image(path, image_size, resize_mode, cache=self), unique_paths))
 
 
 def _source_signature(path_text: str) -> tuple[Any, ...]:

@@ -13,6 +13,7 @@ import yaml
 class DatasetCacheConfig:
     mode: str = "memory"
     max_bytes: int = 1_073_741_824
+    read_workers: int = 8
 
 
 @dataclass(frozen=True)
@@ -62,6 +63,7 @@ class WorkflowConfig:
     epochs: int = 30
     checkpoint_freq: int = 1
     speed_log_freq: int = 10
+    remote_sync_interval_epochs: int = 5
 
 
 @dataclass(frozen=True)
@@ -80,8 +82,9 @@ class CnnExperimentConfig:
             raise ValueError("dataset.name must be 'cxr_rait'.")
         if self.dataset.input_res <= 0 or self.optimizer.batch_size <= 0:
             raise ValueError("dataset.input_res and optimizer.batch_size must be positive.")
-        if self.workflow.epochs <= 0 or self.workflow.checkpoint_freq <= 0 or self.workflow.speed_log_freq <= 0:
-            raise ValueError("workflow.epochs, checkpoint_freq, and speed_log_freq must be positive.")
+        if (self.workflow.epochs <= 0 or self.workflow.checkpoint_freq <= 0 or
+                self.workflow.speed_log_freq <= 0 or self.workflow.remote_sync_interval_epochs <= 0):
+            raise ValueError("workflow timing and sync intervals must be positive.")
         if self.optimizer.lr <= 0 or self.optimizer.weight_decay < 0:
             raise ValueError("optimizer.lr must be positive and weight_decay non-negative.")
         if not 0 <= self.model.dropout_rate < 1:
@@ -90,8 +93,8 @@ class CnnExperimentConfig:
             raise ValueError("dataset.resize_mode must be 'pad' or 'stretch'.")
         if self.dataset.cache.mode not in {"none", "memory", "ephemeral"}:
             raise ValueError("dataset.cache.mode must be none, memory, or ephemeral.")
-        if self.dataset.cache.max_bytes <= 0:
-            raise ValueError("dataset.cache.max_bytes must be positive.")
+        if self.dataset.cache.max_bytes <= 0 or self.dataset.cache.read_workers <= 0:
+            raise ValueError("dataset.cache.max_bytes and read_workers must be positive.")
         if self.runtime.accelerator not in {"cpu", "gpu", "cuda", "tpu"}:
             raise ValueError("runtime.accelerator must be cpu, gpu, or tpu.")
         if self.runtime.precision not in {"fp32", "bf16"}:

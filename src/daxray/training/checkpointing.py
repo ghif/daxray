@@ -32,7 +32,7 @@ class TopKCheckpointManager:
                 best_fn=lambda metrics: float(metrics["selection_score"]),
                 best_mode="max",
                 keep_checkpoints_without_metrics=False,
-                enable_async_checkpointing=False,
+                enable_async_checkpointing=True,
             ),
         )
         self.resume = resume
@@ -60,6 +60,7 @@ class TopKCheckpointManager:
         return dict(self._manager.restore(selected, args=restore_args))
 
     def retained(self) -> list[RetainedCheckpoint]:
+        self.wait_until_finished()
         result = []
         for step in self._manager.all_steps():
             metadata = self._manager.metadata(step)
@@ -69,3 +70,7 @@ class TopKCheckpointManager:
 
     def close(self) -> None:
         self._manager.close()
+
+    def wait_until_finished(self) -> None:
+        """Wait for pending asynchronous checkpoint uploads."""
+        self._manager.wait_until_finished()

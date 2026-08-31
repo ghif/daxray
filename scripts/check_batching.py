@@ -6,6 +6,8 @@ from daxray.evaluation import save_batch_grid
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Save a labeled CXR-RAIT batch grid.")
+    parser.add_argument("--root", default="gs://cxr-rait/cxr-demography-data")
+    parser.add_argument("--split-manifest", default="artifacts/cxr_rait/split_manifest_seed7.json")
     parser.add_argument("--split", choices=("train", "validation", "test"), default="train")
     parser.add_argument("--batch-size", type=int, default=8)
     parser.add_argument("--columns", type=int, default=4)
@@ -15,8 +17,8 @@ def main() -> None:
     parser.add_argument("--output", default="artifacts/cxr_rait/batch_train_seed7.png")
     args = parser.parse_args()
 
-    records = build_cxr_rait_manifest("gs://cxr-rait/cxr-demography-data")
-    split = load_split_manifest("artifacts/cxr_rait/split_manifest_seed7.json")
+    records = build_cxr_rait_manifest(args.root)
+    split = load_split_manifest(args.split_manifest)
     batch = next(iter_batches(
         records,
         split["splits"][args.split],

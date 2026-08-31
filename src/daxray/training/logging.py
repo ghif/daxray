@@ -15,9 +15,13 @@ from tensorboard.summary.writer.event_file_writer import EventFileWriter
 
 
 class RunLogger:
-    def __init__(self, trainlog_path: str, tensorboard_path: str):
+    def __init__(self, trainlog_path: str, tensorboard_path: str, *, remote_sync_interval_epochs: int = 1):
         self.trainlog_path = trainlog_path
         self.tensorboard_path = tensorboard_path.rstrip("/")
+        if remote_sync_interval_epochs <= 0:
+            raise ValueError("remote_sync_interval_epochs must be positive.")
+        self.remote_sync_interval_epochs = remote_sync_interval_epochs
+        self._last_sync_epoch: int | None = None
         self._remote = trainlog_path.startswith("gs://")
         self._temporary: tempfile.TemporaryDirectory[str] | None = None
         if self._remote:
@@ -45,11 +49,13 @@ class RunLogger:
         tensorboard_names = {
             "train_loss": "train/loss",
             "batch_loss": "train/batch_loss",
+            "training_accuracy": "training/accuracy",
             "validation_accuracy": "validation/accuracy",
             "validation_auroc": "validation/auroc",
             "validation_auprc": "validation/auprc",
             "validation_sensitivity": "validation/sensitivity",
             "validation_specificity": "validation/specificity",
+            "test_accuracy": "test/accuracy",
             "learning_rate": "learning_rate",
             "epoch_seconds": "epoch_duration_seconds",
             "epoch_samples_per_sec": "epoch_samples_per_sec",
@@ -61,8 +67,16 @@ class RunLogger:
                 summary.value.add(tag=tensorboard_names.get(str(key), str(key)), simple_value=float(value))
         self._writer.add_event(event_pb2.Event(wall_time=float(event["timestamp_unix"]), step=step, summary=summary))
         self._writer.flush()
-        if self._remote and sync_remote:
+        epoch = event.get("epoch")
+        should_sync = event.get("event") == "training_completed"
+        if isinstance(epoch, int):
+            should_sync = should_sync or self._last_sync_epoch is None or epoch % self.remote_sync_interval_epochs == 0
+        elif self._last_sync_epoch is None:
+            should_sync = True
+        if self._remote and sync_remote and should_sync:
             self._sync()
+            if isinstance(epoch, int):
+                self._last_sync_epoch = epoch
 
     @staticmethod
     def _format(values: Mapping[str, Any]) -> str:

@@ -158,8 +158,11 @@ bytes are read and decoded in memory, then the normalized resized tensor is
 cached for reuse across epochs. No raw DICOM files or persistent cache files
 are written to the local drive. Configure this under `dataset.cache` with
 `mode: memory`, `mode: none`, or the cleaned-up `mode: ephemeral` fallback;
-`max_bytes` limits cache usage. Cache hit rate, read/preprocessing time, and
-evictions are printed in the progress log and recorded in TensorBoard.
+`max_bytes` limits cache usage and `read_workers` controls concurrent initial
+GCS reads. Cache hit rate, read/preprocessing time, and evictions are printed
+in the progress log and recorded in TensorBoard. Remote logs synchronize at
+the configured workflow interval, while Orbax checkpoint uploads run
+asynchronously and are awaited before final results are written.
 
 Train the first learned sanity-check baseline using metadata only:
 

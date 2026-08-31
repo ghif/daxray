@@ -170,7 +170,8 @@ def run_cnn_baseline(config: CnnExperimentConfig, *, resume: bool = False, dry_r
         raise FileExistsError(f"Checkpoint directory already exists: {config.run_directory}")
     fs.makedirs(run_name, exist_ok=True)
     _write_text(config.artifact_path("config.yaml"), yaml.safe_dump(config.to_dict(), sort_keys=False))
-    logger = RunLogger(config.artifact_path("trainlog.txt"), config.artifact_path("tensorboard"))
+    logger = RunLogger(config.artifact_path("trainlog.txt"), config.artifact_path("tensorboard"),
+                       remote_sync_interval_epochs=config.workflow.remote_sync_interval_epochs)
     manager = TopKCheckpointManager(config.run_directory, keep_top_k=config.checkpoint_keep_top_k)
     cache = PreprocessingCache(config.dataset.cache.mode, config.dataset.cache.max_bytes)
     try:
@@ -193,6 +194,13 @@ def run_cnn_baseline(config: CnnExperimentConfig, *, resume: bool = False, dry_r
         logger.log({"event": "dataset_loaded", "records": len(records),
                     "train_records": len(split["splits"]["train"]), "validation_records": len(split["splits"]["validation"]),
                     "test_records": len(split["splits"]["test"]), "dataset_fingerprint": split.get("dataset_fingerprint")})
+        cache_paths = [record["image_path"] for record in records if record.get("image_path") is not None]
+        logger.log({"event": "data_prewarm_started", "sample_count": len(cache_paths),
+                    "read_workers": config.dataset.cache.read_workers})
+        cache.prewarm(cache_paths, config.image_size, config.resize_mode,
+                      read_workers=config.dataset.cache.read_workers)
+        logger.log({"event": "data_prewarm_completed", **{f"data/{key}": value
+                    for key, value in cache.stats.as_dict().items()}})
         model = CxrSmallCNN(
             rngs=nnx.Rngs(config.seed),
             dropout_rate=config.dropout_rate,
@@ -200,12 +208,14 @@ def run_cnn_baseline(config: CnnExperimentConfig, *, resume: bool = False, dry_r
         )
         optimizer = create_cnn_optimizer(model, config.learning_rate, config.weight_decay)
         start_epoch = 0
+        checkpoint_scores: dict[int, float] = {}
         if resume:
             restored = manager.restore(target=_checkpoint_target(model, optimizer, config.seed))
             if restored is not None:
                 nnx.update(model, restored["model"])
                 nnx.update(optimizer, restored["optimizer"])
                 start_epoch = int(restored["epoch"])
+                checkpoint_scores = {item.step: item.auroc for item in manager.retained()}
         history = []
         for epoch in range(start_epoch + 1, config.epochs + 1):
             started = datetime.now(timezone.utc)
@@ -245,24 +255,31 @@ def run_cnn_baseline(config: CnnExperimentConfig, *, resume: bool = False, dry_r
                 devices=devices,
                 progress_callback=batch_progress,
             )
+            training = _evaluate(model, records, split["splits"]["train"], config, cache)
             validation = _evaluate(model, records, split["splits"]["validation"], config, cache)
             state = {"model": nnx.state(model), "optimizer": nnx.state(optimizer), "epoch": epoch, "rng": {"seed": config.seed}}
             saved = manager.save(epoch, state, float(validation["auroc"]))
-            retained = manager.retained()
+            checkpoint_scores[epoch] = float(validation["auroc"])
+            retained_steps = [step for step, _ in sorted(
+                checkpoint_scores.items(), key=lambda item: (item[1], item[0]), reverse=True
+            )[:config.checkpoint_keep_top_k]]
+            retained = [checkpoint_scores[step] for step in sorted(retained_steps)]
             event = {"timestamp": started.isoformat(), "timestamp_unix": started.timestamp(), "epoch": epoch,
-                     "train_loss": loss, "validation_auroc": validation["auroc"], "validation_auprc": validation["auprc"],
+                     "train_loss": loss, "training_accuracy": training["accuracy"],
+                     "validation_auroc": validation["auroc"], "validation_auprc": validation["auprc"],
                      "validation_accuracy": validation["accuracy"], "validation_f1": validation["f1"],
                      "validation_sensitivity": validation["sensitivity"], "validation_specificity": validation["specificity"],
                      "learning_rate": config.learning_rate, "checkpoint_saved": saved,
                      "samples_per_epoch": samples_per_epoch,
-                     "retained_checkpoint_steps": [item.step for item in retained],
-                     "retained_checkpoint_count": len(retained),
-                     "best_validation_auroc": max((item.auroc for item in retained), default=float("nan")),
+                     "retained_checkpoint_steps": sorted(retained_steps),
+                     "retained_checkpoint_count": len(retained_steps),
+                     "best_validation_auroc": max(retained, default=float("nan")),
                      "epoch_seconds": (datetime.now(timezone.utc) - started).total_seconds()}
             event["epoch_samples_per_sec"] = samples_per_epoch / max(event["epoch_seconds"], 1e-12)
             event.update({f"data/{key}": value for key, value in cache.stats.as_dict().items()})
             logger.log(event)
-            history.append({"epoch": epoch, "train_loss": loss, "validation": validation})
+            history.append({"epoch": epoch, "train_loss": loss, "training": training, "validation": validation})
+        manager.wait_until_finished()
         best_step = manager.best_step
         if best_step is not None:
             best_state = manager.restore(
@@ -279,7 +296,11 @@ def run_cnn_baseline(config: CnnExperimentConfig, *, resume: bool = False, dry_r
                   "metrics": metrics, "history": history, "cache": cache.stats.as_dict()}
         _write_text(config.artifact_path("results.json"), json.dumps(result, indent=2, allow_nan=True, default=str))
         logger.log({"event": "training_completed", "best_checkpoint_step": best_step,
-                    "retained_checkpoint_steps": [item.step for item in retained], "results": config.artifact_path("results.json")})
+                    "retained_checkpoint_steps": [item.step for item in retained],
+                    "training_accuracy": metrics["train"]["accuracy"],
+                    "validation_accuracy": metrics["validation"]["accuracy"],
+                    "test_accuracy": metrics["test"]["accuracy"],
+                    "results": config.artifact_path("results.json")})
         return result
     finally:
         manager.close()

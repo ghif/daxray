@@ -11,6 +11,7 @@ dataset:
   cache:
     mode: memory
     max_bytes: 2147483648
+    read_workers: 8
 model:
   name: cxr_small_cnn
   dropout_rate: 0.2
@@ -33,5 +34,6 @@ workflow:
   type: train-classifier
   predictor_model: cxr_rait_image_classifier
   epochs: 30
-  checkpoint_freq: 5
+  checkpoint_freq: 1
   speed_log_freq: 10
+  remote_sync_interval_epochs: 5

@@ -9,6 +9,7 @@ dataset:
   cache:
     mode: memory
     max_bytes: 1073741824
+    read_workers: 8
 model:
   name: cxr_small_cnn
   dropout_rate: 0.2
@@ -33,3 +34,4 @@ workflow:
   epochs: 30
   checkpoint_freq: 1
   speed_log_freq: 10
+  remote_sync_interval_epochs: 5
