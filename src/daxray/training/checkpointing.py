@@ -71,6 +71,9 @@ class TopKCheckpointManager:
             metrics={"validation_auroc": float(auroc), "selection_score": float(auroc) + step * 1e-12},
         ))
         if saved and self._remote:
+            # Orbax may finalize even synchronous local saves on a worker
+            # thread. Snapshot only after the local directory is complete.
+            self._manager.wait_until_finished()
             retained_steps = [int(item) for item in self._manager.all_steps()]
             snapshot = self._snapshot_root / str(step)
             shutil.copytree(self._local_orbax_directory / str(step), snapshot)
