@@ -33,5 +33,5 @@ workflow:
   type: train-classifier
   predictor_model: cxr_rait_image_classifier
   epochs: 30
-  checkpoint_freq: 1
+  checkpoint_freq: 5
   speed_log_freq: 10
