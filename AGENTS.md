@@ -126,3 +126,10 @@ Before editing, inspect the affected modules and tests. Make focused changes,
 preserve unrelated user work, and run the narrowest relevant tests followed by
 the full available suite. Summarize changed files, commands run, and any
 dataset or environment limitation in the final handoff.
+
+## Maintaining this file
+
+Keep this file for knowledge useful to almost every future agent session in this project.
+Do not repeat what the codebase already shows; point to the authoritative file or command instead.
+Prefer rewriting or pruning existing entries over appending new ones.
+When updating this file, preserve this bar for all agents and keep entries concise.
