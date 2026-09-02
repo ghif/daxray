@@ -175,6 +175,51 @@ reports accuracy, balanced accuracy, AUROC, AUPRC, sensitivity, specificity,
 and F1 for the train, validation, and test splits. Results are written to
 `artifacts/cxr_rait/metadata_baseline.json`.
 
+### Evaluate Faster R-CNN Zero-Shot Transfer on CXR-RAIT
+
+To run the zero-shot evaluation of the TBX11K-trained Faster R-CNN (ResNet-50-FPN-V2) on CXR-RAIT:
+
+```bash
+conda run -n med-jax env PYTHONPATH=src \
+  python scripts/evaluate_faster_rcnn_cxr_rait.py \
+  --manifest artifacts/cxr_rait/split_manifest_seed7.json \
+  --split all \
+  --threshold 0.001 \
+  --output-dir artifacts/cxr_rait_zero_shot \
+  --bootstrap-samples 1000 \
+  --save-galleries 5
+```
+
+For manifest auditing and verification without model inference:
+
+```bash
+conda run -n med-jax env PYTHONPATH=src \
+  python scripts/evaluate_faster_rcnn_cxr_rait.py \
+  --manifest artifacts/cxr_rait/split_manifest_seed7.json \
+  --split all \
+  --dry-run
+```
+
+For locked evaluation with threshold tuning on the validation split:
+
+```bash
+conda run -n med-jax env PYTHONPATH=src \
+  python scripts/evaluate_faster_rcnn_cxr_rait.py \
+  --manifest artifacts/cxr_rait/split_manifest_seed7.json \
+  --split test \
+  --tune-threshold \
+  --tune-split validation \
+  --tuning-criterion max_f1 \
+  --locked \
+  --output-dir artifacts/cxr_rait_zero_shot_test
+```
+
+Outputs are written to the target directory:
+- `predictions.json`: Per-image predictions and bounding box detections.
+- `metrics.json`: Binary TB transfer metrics with patient bootstrap 95% CIs.
+- `audit.json`: Dataset manifest audit and site breakdowns.
+- `galleries/`: Stratified visualization previews.
+
 ### Train the image classifier
 
 Run the classifier from the `daxray` directory. The command must use the
