@@ -19,6 +19,15 @@ def test_config_loads_and_resolves_named_run(tmp_path):
     assert config.artifact_path("results.json").endswith("/from_override/results.json")
 
 
+def test_config_supports_disabling_full_dataset_prewarm(tmp_path):
+    path = tmp_path / "config.yaml"
+    path.write_text("version: '1'\nworkflow:\n  prewarm: false\n", encoding="utf-8")
+
+    config = load_cnn_config(path)
+
+    assert config.workflow.prewarm is False
+
+
 def test_config_rejects_nested_checkpoint_name():
     try:
         CnnExperimentConfig(artifacts=ArtifactsConfig(run_name="bad/name"))
@@ -48,6 +57,16 @@ def test_checkpoint_manager_restores_nnx_state_with_target(tmp_path):
     nnx.update(restored_model, restored["model"])
 
     assert restored_model(jnp.ones((1, 32, 32, 1))).shape == (1,)
+    manager.close()
+
+
+def test_checkpoint_snapshot_includes_orbax_root_metadata(tmp_path):
+    manager = TopKCheckpointManager(str(tmp_path), keep_top_k=1)
+    manager.save(1, {"value": np.asarray([1])}, 0.5)
+
+    orbax_root = tmp_path / "orbax"
+    assert (orbax_root / "metadata").is_dir()
+    assert manager.latest_step == 1
     manager.close()
 
 

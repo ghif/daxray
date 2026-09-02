@@ -4,34 +4,39 @@ dataset:
   name: cxr_rait
   root: gs://cxr-rait/cxr-demography-data
   split_manifest: artifacts/cxr_rait/split_manifest_seed7.json
-  input_res: 128
+  input_res: 224
   resize_mode: pad
   cache:
     mode: memory
-    max_bytes: 1073741824
+    max_bytes: 2147483648
     read_workers: 8
+  augmentation:
+    enabled: true
+    horizontal_flip_prob: 0.5
+    contrast_range: 0.1
+    brightness_range: 0.05
 model:
   name: cxr_small_cnn
-  dropout_rate: 0.2
-  base_channels: 16
+  dropout_rate: 0.1
+  base_channels: 32
 optimizer:
   name: adamw
   lr: 0.001
   weight_decay: 0.0001
   batch_size: 16
-  class_weighting: balanced
+  class_weighting: none
   positive_class_weight: 1.0
   negative_class_weight: 1.0
-  schedule: cosine
+  schedule: constant
   min_lr: 0.00001
   gradient_clip_norm: 1.0
 runtime:
   accelerator: cpu
   precision: fp32
-  execution_mode: auto
+  execution_mode: single_device
 artifacts:
   root: checkpoints
-  run_name: cnn_baseline_cpu_31-08-2026
+  run_name: cnn_baseline_improved_cpu_2026-09-02
   remote_root: gs://cxr-rait/checkpoints/classifier
   checkpoint_keep_top_k: 3
   checkpoint_metric: validation.auroc
@@ -39,6 +44,7 @@ workflow:
   type: train-classifier
   predictor_model: cxr_rait_image_classifier
   epochs: 30
-  checkpoint_freq: 5
+  checkpoint_freq: 1
   speed_log_freq: 10
   remote_sync_interval_epochs: 5
+  prewarm: false

@@ -7,7 +7,7 @@ import os
 import tempfile
 import time
 from collections import OrderedDict
-from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass
 from pathlib import Path
 from threading import RLock
@@ -43,13 +43,16 @@ class CacheStats:
 class PreprocessingCache:
     """Bounded per-process cache for deterministic preprocessed images."""
 
-    def __init__(self, mode: str = "memory", max_bytes: int = 1_073_741_824):
+    def __init__(self, mode: str = "memory", max_bytes: int = 1_073_741_824, read_workers: int = 8):
         if mode not in {"none", "memory", "ephemeral"}:
             raise ValueError("cache mode must be none, memory, or ephemeral.")
         if max_bytes <= 0:
             raise ValueError("cache max_bytes must be positive.")
+        if read_workers <= 0:
+            raise ValueError("cache read_workers must be positive.")
         self.mode = mode
         self.max_bytes = max_bytes
+        self.read_workers = read_workers
         self.stats = CacheStats()
         self._lock = RLock()
         self._entries: OrderedDict[tuple[Any, ...], tuple[np.ndarray | Path, int]] = OrderedDict()
@@ -102,13 +105,28 @@ class PreprocessingCache:
             self._temporary.cleanup()
             self._temporary = None
 
-    def prewarm(self, paths: list[str | Path], image_size: int, resize_mode: str, *, read_workers: int = 8) -> None:
+    def prewarm(self, paths: list[str | Path], image_size: int, resize_mode: str, *, read_workers: int = 8,
+                progress: Any | None = None) -> None:
         """Preprocess unique source images concurrently into this cache."""
         if self.mode == "none":
             return
         unique_paths = list(dict.fromkeys(str(path) for path in paths))
         with ThreadPoolExecutor(max_workers=read_workers, thread_name_prefix="daxray-dicom") as executor:
-            list(executor.map(lambda path: load_cxr_image(path, image_size, resize_mode, cache=self), unique_paths))
+            futures = [executor.submit(load_cxr_image, path, image_size, resize_mode, self) for path in unique_paths]
+            for completed, future in enumerate(as_completed(futures), start=1):
+                future.result()
+                if progress is not None:
+                    progress(completed, len(unique_paths))
+
+    def load_many(self, paths: list[str | Path], image_size: int, resize_mode: str) -> list[np.ndarray]:
+        """Load one batch concurrently while keeping cache ownership per process."""
+        if len(paths) <= 1 or self.mode == "none":
+            return [load_cxr_image(path, image_size, resize_mode, cache=self) for path in paths]
+        with ThreadPoolExecutor(max_workers=min(self.read_workers, len(paths)),
+                                thread_name_prefix="daxray-batch") as executor:
+            return list(executor.map(
+                lambda path: load_cxr_image(path, image_size, resize_mode, cache=self), paths
+            ))
 
 
 def _source_signature(path_text: str) -> tuple[Any, ...]:

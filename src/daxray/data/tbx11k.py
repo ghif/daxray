@@ -92,21 +92,32 @@ class TBX11KSample:
         return self.has_active_tb or self.has_latent_tb
 
 
-def parse_voc_xml(xml_path: Path | str) -> list[BoundingBox]:
+def parse_voc_xml(xml_path: Path | str) -> tuple[list[BoundingBox], int, int]:
     """Parses Pascal VOC XML format annotation for TBX11K.
 
     Args:
         xml_path: Path to XML file.
 
     Returns:
-        List of BoundingBox objects.
+        Tuple of (list of BoundingBox objects, original width, original height).
     """
     path = Path(xml_path)
     if not path.exists():
-        return []
+        return [], 512, 512
 
     tree = ET.parse(path)
     root = tree.getroot()
+
+    size_elem = root.find("size")
+    orig_w = 512
+    orig_h = 512
+    if size_elem is not None:
+        w_el = size_elem.find("width")
+        h_el = size_elem.find("height")
+        if w_el is not None and w_el.text:
+            orig_w = int(float(w_el.text))
+        if h_el is not None and h_el.text:
+            orig_h = int(float(h_el.text))
 
     boxes = []
     for obj in root.findall("object"):
@@ -144,7 +155,7 @@ def parse_voc_xml(xml_path: Path | str) -> list[BoundingBox]:
             )
         )
 
-    return boxes
+    return boxes, orig_w, orig_h
 
 
 def parse_coco_json(json_path: Path | str) -> dict[str, list[BoundingBox]]:
@@ -234,7 +245,10 @@ class TBX11KDataset:
 
             # Try loading corresponding XML annotation if exists
             xml_path = self.annotations_xml_dir / f"{stem}.xml"
-            boxes = parse_voc_xml(xml_path) if xml_path.exists() else []
+            if xml_path.exists():
+                boxes, orig_w, orig_h = parse_voc_xml(xml_path)
+            else:
+                boxes, orig_w, orig_h = [], 512, 512
 
             # Determine image-level label:
             # 0: Healthy, 1: Active TB, 2: Latent TB, 3: Sick (other pulmonary disease)
@@ -249,12 +263,12 @@ class TBX11KDataset:
             else:
                 label = 0
 
-            # Default dummy dims if not opened yet
+            # Set dims from XML metadata
             sample = TBX11KSample(
                 image_id=stem,
                 image_path=img_path,
-                width=512,
-                height=512,
+                width=orig_w,
+                height=orig_h,
                 boxes=boxes,
                 image_label=label,
             )
@@ -277,11 +291,9 @@ class TBX11KDataset:
             raise FileNotFoundError(f"Image not found: {sample.image_path}")
 
         img = Image.open(sample.image_path).convert("RGB")
-        orig_w, orig_h = img.size
-        sample.width = orig_w
-        sample.height = orig_h
+        img_w, img_h = img.size
 
-        if (orig_w, orig_h) != target_size:
+        if (img_w, img_h) != target_size:
             img_resized = img.resize(target_size, Image.Resampling.BILINEAR)
         else:
             img_resized = img
@@ -293,9 +305,9 @@ class TBX11KDataset:
             std = np.array([0.229, 0.224, 0.225], dtype=np.float32)
             img_np = (img_np - mean) / std
 
-        # Scale ground truth boxes
-        scale_x = float(target_size[0]) / float(orig_w)
-        scale_y = float(target_size[1]) / float(orig_h)
+        # Scale ground truth boxes using XML declared original dimensions
+        scale_x = float(target_size[0]) / float(sample.width)
+        scale_y = float(target_size[1]) / float(sample.height)
         scaled_boxes = [b.scale(scale_x, scale_y) for b in sample.boxes]
 
         return img_np, scaled_boxes

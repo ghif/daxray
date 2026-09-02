@@ -11,7 +11,25 @@ from typing import Any, Mapping
 import fsspec
 from tensorboard.compat.proto import summary_pb2
 from tensorboard.compat.proto import event_pb2
-from tensorboard.summary.writer.event_file_writer import EventFileWriter
+from tensorboard.summary.writer.record_writer import RecordWriter
+
+
+class _EventFileWriter:
+    """Small synchronous writer that avoids TensorFlow's optional import path."""
+
+    def __init__(self, directory: Path):
+        filename = directory / f"events.out.tfevents.{int(time.time())}.{os.getpid()}"
+        self._file = filename.open("wb")
+        self._writer = RecordWriter(self._file)
+
+    def add_event(self, event: event_pb2.Event) -> None:
+        self._writer.write(event.SerializeToString())
+
+    def flush(self) -> None:
+        self._writer.flush()
+
+    def close(self) -> None:
+        self._writer.close()
 
 
 class RunLogger:
@@ -35,7 +53,7 @@ class RunLogger:
             self._local_log.parent.mkdir(parents=True, exist_ok=True)
         self._local_tb.mkdir(parents=True, exist_ok=True)
         self._handle = self._local_log.open("a", encoding="utf-8")
-        self._writer = EventFileWriter(str(self._local_tb))
+        self._writer = _EventFileWriter(self._local_tb)
 
     def log(self, values: Mapping[str, Any], *, sync_remote: bool = True) -> None:
         event = dict(values)

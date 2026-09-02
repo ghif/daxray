@@ -1,6 +1,12 @@
 """Model definitions and architectures."""
 
-from .cnn import CxrSmallCNN, binary_cross_entropy_with_logits, compute_dtype_for_precision, model_parameter_count
+from .cnn import (
+    CxrSmallCNN,
+    binary_cross_entropy_with_logits,
+    binary_cross_entropy_with_logits_per_example,
+    compute_dtype_for_precision,
+    model_parameter_count,
+)
 from .faster_rcnn import FasterRCNN, FastRCNNConvFCHead, FastRCNNPredictor, RoIHeads
 from .logistic import LogisticClassifier, fit_logistic_classifier
 from .resnet_fpn import BackboneWithFPN, Bottleneck, FeaturePyramidNetwork, ResNet50
@@ -23,6 +29,7 @@ __all__ = [
     "ResNet50",
     "RoIHeads",
     "binary_cross_entropy_with_logits",
+    "binary_cross_entropy_with_logits_per_example",
     "compute_dtype_for_precision",
     "fit_logistic_classifier",
     "load_pretrained_faster_rcnn",

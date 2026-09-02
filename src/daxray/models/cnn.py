@@ -43,15 +43,18 @@ class CxrSmallCNN(nnx.Module):
     probability.
     """
 
-    def __init__(self, *, rngs: nnx.Rngs, dropout_rate: float = 0.2, dtype: jnp.dtype = jnp.float32):
+    def __init__(self, *, rngs: nnx.Rngs, dropout_rate: float = 0.2,
+                 base_channels: int = 16, dtype: jnp.dtype = jnp.float32):
         if not 0.0 <= dropout_rate < 1.0:
             raise ValueError("dropout_rate must be in [0, 1).")
+        if base_channels <= 0:
+            raise ValueError("base_channels must be positive.")
         self.compute_dtype = dtype
-        self.block1 = ConvBlock(1, 16, dtype=dtype, rngs=rngs)
-        self.block2 = ConvBlock(16, 32, dtype=dtype, rngs=rngs)
-        self.block3 = ConvBlock(32, 64, dtype=dtype, rngs=rngs)
+        self.block1 = ConvBlock(1, base_channels, dtype=dtype, rngs=rngs)
+        self.block2 = ConvBlock(base_channels, base_channels * 2, dtype=dtype, rngs=rngs)
+        self.block3 = ConvBlock(base_channels * 2, base_channels * 4, dtype=dtype, rngs=rngs)
         self.dropout = nnx.Dropout(dropout_rate, rngs=rngs)
-        self.classifier = nnx.Linear(64, 1, dtype=dtype, param_dtype=jnp.float32, rngs=rngs)
+        self.classifier = nnx.Linear(base_channels * 4, 1, dtype=dtype, param_dtype=jnp.float32, rngs=rngs)
 
     def __call__(self, inputs: jnp.ndarray, *, training: bool = False) -> jnp.ndarray:
         inputs = jnp.asarray(inputs, dtype=self.compute_dtype)
@@ -65,9 +68,16 @@ class CxrSmallCNN(nnx.Module):
 
 def binary_cross_entropy_with_logits(logits: jnp.ndarray, labels: jnp.ndarray) -> jnp.ndarray:
     """Numerically stable mean binary cross-entropy."""
+    return jnp.mean(binary_cross_entropy_with_logits_per_example(logits, labels))
+
+
+def binary_cross_entropy_with_logits_per_example(
+    logits: jnp.ndarray, labels: jnp.ndarray
+) -> jnp.ndarray:
+    """Numerically stable binary cross-entropy without reducing the batch."""
     logits = jnp.asarray(logits, dtype=jnp.float32)
     labels = jnp.asarray(labels, dtype=jnp.float32)
-    return jnp.mean(jnp.maximum(logits, 0.0) - logits * labels + jnp.log1p(jnp.exp(-jnp.abs(logits))))
+    return jnp.maximum(logits, 0.0) - logits * labels + jnp.log1p(jnp.exp(-jnp.abs(logits)))
 
 
 def model_parameter_count(model: CxrSmallCNN) -> int:

@@ -71,8 +71,10 @@ def test_voc_xml_parser():
         temp_path = f.name
 
     try:
-        boxes = parse_voc_xml(temp_path)
+        boxes, w, h = parse_voc_xml(temp_path)
         assert len(boxes) == 2
+        assert w == 1000
+        assert h == 1000
         assert boxes[0].category_id == 1
         assert boxes[0].category_name == "Active TB"
         assert boxes[0].x1 == 100.0

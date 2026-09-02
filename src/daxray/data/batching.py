@@ -9,6 +9,33 @@ import numpy as np
 from .dicom import PreprocessingCache, load_cxr_image
 
 
+def augment_images(
+    images: np.ndarray,
+    *,
+    seed: int,
+    horizontal_flip_prob: float = 0.0,
+    contrast_range: float = 0.0,
+    brightness_range: float = 0.0,
+) -> np.ndarray:
+    """Apply deterministic, mild image augmentation to an NHWC batch."""
+    if images.ndim != 4:
+        raise ValueError("images must have shape (N, H, W, C).")
+    if not 0 <= horizontal_flip_prob <= 1 or contrast_range < 0 or brightness_range < 0:
+        raise ValueError("invalid augmentation range")
+    rng = np.random.default_rng(seed)
+    augmented = np.asarray(images, dtype=np.float32).copy()
+    if horizontal_flip_prob:
+        flipped = rng.random(len(augmented)) < horizontal_flip_prob
+        augmented[flipped] = augmented[flipped, :, ::-1, :]
+    if contrast_range:
+        contrast = rng.uniform(1 - contrast_range, 1 + contrast_range, len(augmented)).astype(np.float32)
+        augmented = (augmented - 0.5) * contrast[:, None, None, None] + 0.5
+    if brightness_range:
+        brightness = rng.uniform(-brightness_range, brightness_range, len(augmented)).astype(np.float32)
+        augmented = augmented + brightness[:, None, None, None]
+    return np.clip(augmented, 0.0, 1.0)
+
+
 def iter_batches(
     records: Sequence[Mapping[str, Any]],
     patient_ids: Sequence[str],
@@ -22,6 +49,10 @@ def iter_batches(
     as_jax: bool = False,
     layout: str = "NCHW",
     cache: PreprocessingCache | None = None,
+    augment: bool = False,
+    horizontal_flip_prob: float = 0.0,
+    contrast_range: float = 0.0,
+    brightness_range: float = 0.0,
 ) -> Iterator[dict[str, Any]]:
     """Yield ``(N, 1, H, W)`` image batches and optional labels.
 
@@ -44,9 +75,20 @@ def iter_batches(
         batch_records = [selected[index] for index in order[start : start + batch_size]]
         if len(batch_records) < batch_size and drop_remainder:
             continue
-        images = np.stack([load_cxr_image(record["image_path"], image_size, resize_mode, cache=cache) for record in batch_records])
+        paths = [record["image_path"] for record in batch_records]
+        if cache is not None:
+            images = np.stack(cache.load_many(paths, image_size, resize_mode))
+        else:
+            images = np.stack([load_cxr_image(path, image_size, resize_mode) for path in paths])
         if layout == "NHWC":
             images = np.moveaxis(images, 1, -1)
+        if augment:
+            images = augment_images(
+                images, seed=seed + start,
+                horizontal_flip_prob=horizontal_flip_prob,
+                contrast_range=contrast_range,
+                brightness_range=brightness_range,
+            )
         label_mask = np.asarray([record.get("label") is not None for record in batch_records], dtype=bool)
         labels = np.asarray([record.get("label", -1) if record.get("label") is not None else -1 for record in batch_records], dtype=np.int32)
         batch: dict[str, Any] = {

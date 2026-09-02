@@ -17,6 +17,14 @@ class DatasetCacheConfig:
 
 
 @dataclass(frozen=True)
+class AugmentationConfig:
+    enabled: bool = False
+    horizontal_flip_prob: float = 0.0
+    contrast_range: float = 0.0
+    brightness_range: float = 0.0
+
+
+@dataclass(frozen=True)
 class DatasetConfig:
     name: str = "cxr_rait"
     root: str = "gs://cxr-rait/cxr-demography-data"
@@ -24,12 +32,14 @@ class DatasetConfig:
     input_res: int = 128
     resize_mode: str = "pad"
     cache: DatasetCacheConfig = DatasetCacheConfig()
+    augmentation: AugmentationConfig = AugmentationConfig()
 
 
 @dataclass(frozen=True)
 class ModelConfig:
     name: str = "cxr_small_cnn"
     dropout_rate: float = 0.2
+    base_channels: int = 16
 
 
 @dataclass(frozen=True)
@@ -38,6 +48,12 @@ class OptimizerConfig:
     lr: float = 1e-3
     weight_decay: float = 1e-4
     batch_size: int = 16
+    class_weighting: str = "balanced"
+    positive_class_weight: float = 1.0
+    negative_class_weight: float = 1.0
+    schedule: str = "cosine"
+    min_lr: float = 1e-5
+    gradient_clip_norm: float = 1.0
 
 
 @dataclass(frozen=True)
@@ -64,6 +80,7 @@ class WorkflowConfig:
     checkpoint_freq: int = 1
     speed_log_freq: int = 10
     remote_sync_interval_epochs: int = 5
+    prewarm: bool = True
 
 
 @dataclass(frozen=True)
@@ -87,10 +104,27 @@ class CnnExperimentConfig:
             raise ValueError("workflow timing and sync intervals must be positive.")
         if self.optimizer.lr <= 0 or self.optimizer.weight_decay < 0:
             raise ValueError("optimizer.lr must be positive and weight_decay non-negative.")
+        if self.optimizer.schedule not in {"constant", "cosine"}:
+            raise ValueError("optimizer.schedule must be constant or cosine.")
+        if self.optimizer.min_lr < 0 or self.optimizer.min_lr > self.optimizer.lr:
+            raise ValueError("optimizer.min_lr must be between zero and optimizer.lr.")
+        if self.optimizer.gradient_clip_norm < 0:
+            raise ValueError("optimizer.gradient_clip_norm cannot be negative.")
+        if self.optimizer.class_weighting not in {"none", "balanced", "custom"}:
+            raise ValueError("optimizer.class_weighting must be none, balanced, or custom.")
+        if self.optimizer.positive_class_weight <= 0 or self.optimizer.negative_class_weight <= 0:
+            raise ValueError("class weights must be positive.")
         if not 0 <= self.model.dropout_rate < 1:
             raise ValueError("model.dropout_rate must be in [0, 1).")
+        if self.model.base_channels <= 0:
+            raise ValueError("model.base_channels must be positive.")
         if self.dataset.resize_mode not in {"pad", "stretch"}:
             raise ValueError("dataset.resize_mode must be 'pad' or 'stretch'.")
+        augmentation = self.dataset.augmentation
+        if not 0 <= augmentation.horizontal_flip_prob <= 1:
+            raise ValueError("augmentation.horizontal_flip_prob must be between zero and one.")
+        if augmentation.contrast_range < 0 or augmentation.brightness_range < 0:
+            raise ValueError("augmentation ranges cannot be negative.")
         if self.dataset.cache.mode not in {"none", "memory", "ephemeral"}:
             raise ValueError("dataset.cache.mode must be none, memory, or ephemeral.")
         if self.dataset.cache.max_bytes <= 0 or self.dataset.cache.read_workers <= 0:
@@ -182,10 +216,11 @@ def load_cnn_config(path: str | Path, overrides: Mapping[str, Any] | None = None
         values["artifacts"] = artifacts
     sections = {name: dict(values.get(name) or {}) for name in ("dataset", "model", "optimizer", "runtime", "artifacts", "workflow")}
     dataset_cache = DatasetCacheConfig(**dict(sections["dataset"].pop("cache", {}) or {}))
+    augmentation = AugmentationConfig(**dict(sections["dataset"].pop("augmentation", {}) or {}))
     return CnnExperimentConfig(
         version=str(values.get("version", "1")),
         seed=int(values.get("seed", 7)),
-        dataset=DatasetConfig(cache=dataset_cache, **sections["dataset"]),
+        dataset=DatasetConfig(cache=dataset_cache, augmentation=augmentation, **sections["dataset"]),
         model=ModelConfig(**sections["model"]),
         optimizer=OptimizerConfig(**sections["optimizer"]),
         runtime=RuntimeConfig(**sections["runtime"]),
