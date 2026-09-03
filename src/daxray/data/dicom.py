@@ -11,11 +11,71 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass
 from pathlib import Path
 from threading import RLock
-from typing import Any
+from typing import Any, Sequence
 
 import numpy as np
 
 PREPROCESSING_VERSION = "1"
+DETECTION_PREPROCESSING_VERSION = "cxr-rait-detection-v1"
+
+
+@dataclass(frozen=True)
+class TransformDetails:
+    """Transform details for mapping coordinates between original image and canvas."""
+
+    orig_width: int
+    orig_height: int
+    target_width: int
+    target_height: int
+    scale: float
+    pad_left: int
+    pad_top: int
+    pad_right: int
+    pad_bottom: int
+    new_width: int
+    new_height: int
+    rescale_slope: float = 1.0
+    rescale_intercept: float = 0.0
+    photometric_interpretation: str = "MONOCHROME2"
+    preprocessing_version: str = DETECTION_PREPROCESSING_VERSION
+
+    def as_dict(self) -> dict[str, Any]:
+        return {
+            "orig_width": self.orig_width,
+            "orig_height": self.orig_height,
+            "target_width": self.target_width,
+            "target_height": self.target_height,
+            "scale": self.scale,
+            "pad_left": self.pad_left,
+            "pad_top": self.pad_top,
+            "pad_right": self.pad_right,
+            "pad_bottom": self.pad_bottom,
+            "new_width": self.new_width,
+            "new_height": self.new_height,
+            "rescale_slope": self.rescale_slope,
+            "rescale_intercept": self.rescale_intercept,
+            "photometric_interpretation": self.photometric_interpretation,
+            "preprocessing_version": self.preprocessing_version,
+        }
+
+    def canvas_to_orig_box(self, box: Sequence[float]) -> list[float]:
+        """Maps [x1, y1, x2, y2] from target canvas coordinates to original image coordinates."""
+        x1, y1, x2, y2 = box
+        orig_x1 = max(0.0, min(float(self.orig_width), (x1 - self.pad_left) / self.scale))
+        orig_y1 = max(0.0, min(float(self.orig_height), (y1 - self.pad_top) / self.scale))
+        orig_x2 = max(0.0, min(float(self.orig_width), (x2 - self.pad_left) / self.scale))
+        orig_y2 = max(0.0, min(float(self.orig_height), (y2 - self.pad_top) / self.scale))
+        return [round(orig_x1, 2), round(orig_y1, 2), round(orig_x2, 2), round(orig_y2, 2)]
+
+    def orig_to_canvas_box(self, box: Sequence[float]) -> list[float]:
+        """Maps [x1, y1, x2, y2] from original image coordinates to target canvas coordinates."""
+        x1, y1, x2, y2 = box
+        canv_x1 = max(0.0, min(float(self.target_width), x1 * self.scale + self.pad_left))
+        canv_y1 = max(0.0, min(float(self.target_height), y1 * self.scale + self.pad_top))
+        canv_x2 = max(0.0, min(float(self.target_width), x2 * self.scale + self.pad_left))
+        canv_y2 = max(0.0, min(float(self.target_height), y2 * self.scale + self.pad_top))
+        return [round(canv_x1, 2), round(canv_y1, 2), round(canv_x2, 2), round(canv_y2, 2)]
+
 
 
 @dataclass
@@ -191,3 +251,126 @@ def load_cxr_image(path: str | Path, image_size: int = 224, resize_mode: str = "
         cache.stats.preprocess_seconds += time.perf_counter() - preprocess_started
         cache.put(key, result)
     return result
+
+
+IMAGENET_MEAN = np.array([0.485, 0.456, 0.406], dtype=np.float32)
+IMAGENET_STD = np.array([0.229, 0.224, 0.225], dtype=np.float32)
+
+
+def load_cxr_image_for_detection(
+    path: str | Path,
+    target_size: tuple[int, int] = (512, 512),
+    normalize: bool = True,
+    cache: PreprocessingCache | None = None,
+    patient_id: str | None = None,
+) -> tuple[np.ndarray, TransformDetails, np.ndarray]:
+    """Load a CXR image/DICOM prepared for Faster R-CNN detection.
+
+    Applies rescale slope/intercept, MONOCHROME1 inversion, min-max intensity
+    normalization, aspect-preserving resize with zero padding to target_size,
+    grayscale-to-RGB conversion, and ImageNet normalization.
+
+    Args:
+        path: File path or gs:// URI.
+        target_size: Target (width, height), default (512, 512).
+        normalize: If True, applies ImageNet mean/std normalization.
+        cache: Optional PreprocessingCache instance.
+        patient_id: Optional patient identifier for error reporting.
+
+    Returns:
+        norm_tensor: (1, H, W, 3) float32 array ready for Faster R-CNN input.
+        transform_details: TransformDetails instance recording geometry and box mappings.
+        display_image: (H, W, 3) uint8 RGB array for visualization.
+    """
+    if len(target_size) != 2 or target_size[0] <= 0 or target_size[1] <= 0:
+        raise ValueError(f"target_size must be positive (width, height), got {target_size}")
+
+    import pydicom
+    from PIL import Image
+
+    path_text = str(path)
+    read_started = time.perf_counter()
+    try:
+        if path_text.startswith("gs://"):
+            import fsspec
+            with fsspec.open(path_text, mode="rb") as handle:
+                raw = handle.read()
+        else:
+            raw = Path(path_text).read_bytes()
+    except Exception as exc:
+        patient_suffix = f" for patient {patient_id}" if patient_id else ""
+        raise ValueError(f"Unable to read DICOM image at {path_text}{patient_suffix}") from exc
+
+    if cache is not None:
+        cache.stats.dicom_read_seconds += time.perf_counter() - read_started
+
+    preprocess_started = time.perf_counter()
+    rescale_slope = 1.0
+    rescale_intercept = 0.0
+    photometric = "MONOCHROME2"
+
+    try:
+        ds = pydicom.dcmread(io.BytesIO(raw))
+        pixels = ds.pixel_array.astype(np.float32)
+        rescale_slope = float(getattr(ds, "RescaleSlope", 1.0))
+        rescale_intercept = float(getattr(ds, "RescaleIntercept", 0.0))
+        pixels = pixels * rescale_slope + rescale_intercept
+        photometric = str(getattr(ds, "PhotometricInterpretation", "MONOCHROME2"))
+        if photometric == "MONOCHROME1":
+            pixels = pixels.max() - pixels
+        low, high = float(pixels.min()), float(pixels.max())
+        pixels = (pixels - low) / (high - low) if high > low else np.zeros_like(pixels)
+        orig_h, orig_w = pixels.shape[:2]
+        base_image = Image.fromarray(np.asarray(pixels * 255.0, dtype=np.uint8)).convert("L")
+    except Exception:
+        # Fallback for standard non-DICOM fixtures (e.g. PNG / JPEG test data)
+        try:
+            base_image = Image.open(io.BytesIO(raw)).convert("L")
+            orig_w, orig_h = base_image.size
+        except Exception as exc:
+            patient_suffix = f" for patient {patient_id}" if patient_id else ""
+            raise ValueError(f"Unable to decode image at {path_text}{patient_suffix}") from exc
+
+    target_w, target_h = target_size
+    scale = min(target_w / orig_w, target_h / orig_h)
+    new_w = max(1, round(orig_w * scale))
+    new_h = max(1, round(orig_h * scale))
+    pad_left = (target_w - new_w) // 2
+    pad_top = (target_h - new_h) // 2
+    pad_right = target_w - new_w - pad_left
+    pad_bottom = target_h - new_h - pad_top
+
+    resized = base_image.resize((new_w, new_h), Image.Resampling.BILINEAR)
+    canvas = Image.new("RGB", (target_w, target_h), color=(0, 0, 0))
+    canvas.paste(resized.convert("RGB"), (pad_left, pad_top))
+    display_image = np.array(canvas, dtype=np.uint8)
+
+    rgb_np = display_image.astype(np.float32) / 255.0
+    if normalize:
+        norm_tensor = (rgb_np - IMAGENET_MEAN) / IMAGENET_STD
+    else:
+        norm_tensor = rgb_np
+
+    transform_details = TransformDetails(
+        orig_width=orig_w,
+        orig_height=orig_h,
+        target_width=target_w,
+        target_height=target_h,
+        scale=scale,
+        pad_left=pad_left,
+        pad_top=pad_top,
+        pad_right=pad_right,
+        pad_bottom=pad_bottom,
+        new_width=new_w,
+        new_height=new_h,
+        rescale_slope=rescale_slope,
+        rescale_intercept=rescale_intercept,
+        photometric_interpretation=photometric,
+        preprocessing_version=DETECTION_PREPROCESSING_VERSION,
+    )
+
+    if cache is not None:
+        cache.stats.preprocess_seconds += time.perf_counter() - preprocess_started
+
+    return norm_tensor[None, ...], transform_details, display_image
+
