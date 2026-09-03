@@ -16,6 +16,7 @@ from __future__ import annotations
 import argparse
 import json
 import math
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 import sys
 import time
@@ -181,8 +182,12 @@ def run_inference_on_records(
     nms_thresh: float = 0.5,
     max_samples: int | None = None,
     log_interval: int = 25,
+    num_workers: int = 8,
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     """Run forward Faster R-CNN inference over records and produce structured predictions.
+
+    Uses concurrent background threads to overlap GCS/disk DICOM reads and preprocessing
+    with JAX model execution.
 
     Returns:
         Tuple of (successful_predictions, valid_records).
@@ -194,108 +199,119 @@ def run_inference_on_records(
     total = len(eval_records)
     t0 = time.time()
 
-    for idx, r in enumerate(eval_records):
-        pid = r["patient_id"]
-        study_id = r["study_id"]
-        site = r["site"]
-        img_path = r["image_path"]
-
-        try:
-            norm_tensor, transform_details, _ = load_cxr_image_for_detection(
-                img_path,
-                target_size=(512, 512),
-                normalize=True,
-                patient_id=pid,
+    with ThreadPoolExecutor(max_workers=min(num_workers, max(1, total)), thread_name_prefix="daxray-eval-fetch") as executor:
+        futures = [
+            (
+                r,
+                executor.submit(
+                    load_cxr_image_for_detection,
+                    r["image_path"],
+                    (512, 512),
+                    True,
+                    None,
+                    r["patient_id"],
+                ),
             )
-        except Exception as exc:
-            print(f"[Warning] Failed to load image for patient {pid} ({img_path}): {exc}", file=sys.stderr)
-            continue
+            for r in eval_records
+        ]
 
-        # Forward pass
-        raw_outputs = detector.model(
-            jnp.array(norm_tensor),
-            score_thresh=score_thresh,
-            nms_thresh=nms_thresh,
-        )
-        dt = raw_outputs[0]
-        boxes_np = np.array(dt["boxes"])
-        labels_np = np.array(dt["labels"])
-        scores_np = np.array(dt["scores"])
+        for idx, (r, fut) in enumerate(futures):
+            pid = r["patient_id"]
+            study_id = r["study_id"]
+            site = r["site"]
+            img_path = r["image_path"]
 
-        raw_detections: list[dict[str, Any]] = []
-        filtered_detections: list[dict[str, Any]] = []
+            try:
+                norm_tensor, transform_details, _ = fut.result()
+            except Exception as exc:
+                print(f"[Warning] Failed to load image for patient {pid} ({img_path}): {exc}", file=sys.stderr)
+                continue
 
-        active_scores: list[float] = []
-        latent_scores: list[float] = []
+            # Forward pass
+            raw_outputs = detector.model(
+                jnp.array(norm_tensor),
+                score_thresh=score_thresh,
+                nms_thresh=nms_thresh,
+            )
+            dt = raw_outputs[0]
+            boxes_np = np.array(dt["boxes"])
+            labels_np = np.array(dt["labels"])
+            scores_np = np.array(dt["scores"])
 
-        for b, lbl, s in zip(boxes_np, labels_np, scores_np):
-            cat_id = int(lbl)
-            cat_name = "Active TB" if cat_id == 1 else ("Latent TB" if cat_id == 2 else "Background")
-            score_val = float(s)
-            canv_box = [round(float(coord), 2) for coord in b]
-            orig_box = transform_details.canvas_to_orig_box(canv_box)
+            raw_detections: list[dict[str, Any]] = []
+            filtered_detections: list[dict[str, Any]] = []
 
-            det_item = {
-                "box_canvas": canv_box,
-                "box_original": orig_box,
-                "category_id": cat_id,
-                "category_name": cat_name,
-                "score": score_val,
+            active_scores: list[float] = []
+            latent_scores: list[float] = []
+
+            for b, lbl, s in zip(boxes_np, labels_np, scores_np):
+                cat_id = int(lbl)
+                cat_name = "Active TB" if cat_id == 1 else ("Latent TB" if cat_id == 2 else "Background")
+                score_val = float(s)
+                canv_box = [round(float(coord), 2) for coord in b]
+                orig_box = transform_details.canvas_to_orig_box(canv_box)
+
+                det_item = {
+                    "box_canvas": canv_box,
+                    "box_original": orig_box,
+                    "category_id": cat_id,
+                    "category_name": cat_name,
+                    "score": score_val,
+                }
+                raw_detections.append(det_item)
+
+                if cat_id == 1:
+                    active_scores.append(score_val)
+                elif cat_id == 2:
+                    latent_scores.append(score_val)
+
+                if score_val >= operating_threshold:
+                    filtered_detections.append(det_item)
+
+            max_active = max(active_scores) if active_scores else 0.0
+            max_latent = max(latent_scores) if latent_scores else 0.0
+            max_tb = max(max_active, max_latent)
+
+            pred_label = 1 if max_tb >= operating_threshold else 0
+            pred_diag = "TB" if pred_label == 1 else "Non-TB"
+            if pred_label == 1:
+                pred_sub = "Active TB" if max_active >= max_latent else "Latent TB"
+            else:
+                pred_sub = "Non-TB"
+
+            pred_record = {
+                "patient_id": pid,
+                "study_id": study_id,
+                "site": site,
+                "image_path": img_path,
+                "ground_truth": {
+                    "label": r["label"],
+                    "raw_label": r.get("raw_label"),
+                    "is_supervised": r["is_supervised"],
+                    "is_excluded": r["is_excluded"],
+                    "boxes": r.get("boxes", []),
+                },
+                "transform_details": transform_details.as_dict(),
+                "raw_detections": raw_detections,
+                "filtered_detections": filtered_detections,
+                "scores": {
+                    "max_active_tb_score": max_active,
+                    "max_latent_tb_score": max_latent,
+                    "max_tb_score": max_tb,
+                },
+                "threshold": operating_threshold,
+                "predicted_label": pred_label,
+                "predicted_diagnosis": pred_diag,
+                "predicted_subtype": pred_sub,
             }
-            raw_detections.append(det_item)
 
-            if cat_id == 1:
-                active_scores.append(score_val)
-            elif cat_id == 2:
-                latent_scores.append(score_val)
+            predictions.append(pred_record)
+            valid_records.append(r)
 
-            if score_val >= operating_threshold:
-                filtered_detections.append(det_item)
-
-        max_active = max(active_scores) if active_scores else 0.0
-        max_latent = max(latent_scores) if latent_scores else 0.0
-        max_tb = max(max_active, max_latent)
-
-        pred_label = 1 if max_tb >= operating_threshold else 0
-        pred_diag = "TB" if pred_label == 1 else "Non-TB"
-        if pred_label == 1:
-            pred_sub = "Active TB" if max_active >= max_latent else "Latent TB"
-        else:
-            pred_sub = "Non-TB"
-
-        pred_record = {
-            "patient_id": pid,
-            "study_id": study_id,
-            "site": site,
-            "image_path": img_path,
-            "ground_truth": {
-                "label": r["label"],
-                "raw_label": r.get("raw_label"),
-                "is_supervised": r["is_supervised"],
-                "is_excluded": r["is_excluded"],
-                "boxes": r.get("boxes", []),
-            },
-            "transform_details": transform_details.as_dict(),
-            "raw_detections": raw_detections,
-            "filtered_detections": filtered_detections,
-            "scores": {
-                "max_active_tb_score": max_active,
-                "max_latent_tb_score": max_latent,
-                "max_tb_score": max_tb,
-            },
-            "threshold": operating_threshold,
-            "predicted_label": pred_label,
-            "predicted_diagnosis": pred_diag,
-            "predicted_subtype": pred_sub,
-        }
-
-        predictions.append(pred_record)
-        valid_records.append(r)
-
-        if (idx + 1) % log_interval == 0 or (idx + 1) == total:
-            elapsed = time.time() - t0
-            fps = (idx + 1) / elapsed if elapsed > 0 else 0.0
-            print(f"Processed {idx + 1:5d}/{total} samples ({fps:.1f} imgs/s)")
+            if (idx + 1) % log_interval == 0 or (idx + 1) == total:
+                elapsed = time.time() - t0
+                fps = (idx + 1) / elapsed if elapsed > 0 else 0.0
+                print(f"Processed {idx + 1:5d}/{total} samples ({fps:.1f} imgs/s)")
 
     return predictions, valid_records
 

@@ -1,0 +1,4232 @@
+[
+  {
+    "patient_id": "S1801013-4267967",
+    "study_id": "S1801013-4267967",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/1/S1801013-4267967.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 52.30958904109589,
+    "gender": "m"
+  },
+  {
+    "patient_id": "S1801025-4268810",
+    "study_id": "S1801025-4268810",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/1/S1801025-4268810.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 41.6958904109589,
+    "gender": "f"
+  },
+  {
+    "patient_id": "S1801032-4230918",
+    "study_id": "S1801032-4230918",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/1/S1801032-4230918.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 46.416438356164385,
+    "gender": "m"
+  },
+  {
+    "patient_id": "S1801040-4269171",
+    "study_id": "S1801040-4269171",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/1/S1801040-4269171.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 60.42739726027397,
+    "gender": "m"
+  },
+  {
+    "patient_id": "S1801067-4269478",
+    "study_id": "S1801067-4269478",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/1/S1801067-4269478.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 65.82465753424657,
+    "gender": "m"
+  },
+  {
+    "patient_id": "S1801102-4232274",
+    "study_id": "S1801102-4232274",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/1/S1801102-4232274.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 62.47945205479452,
+    "gender": "m"
+  },
+  {
+    "patient_id": "S1802006-4269428",
+    "study_id": "S1802006-4269428",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/2/S1802006-4269428.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 57.016438356164386,
+    "gender": "f"
+  },
+  {
+    "patient_id": "S1802023-3923603",
+    "study_id": "S1802023-3923603",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/2/S1802023-3923603.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 29.268493150684932,
+    "gender": "f"
+  },
+  {
+    "patient_id": "S1804004-4275323",
+    "study_id": "S1804004-4275323",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/4/S1804004-4275323.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 73.95890410958904,
+    "gender": "m"
+  },
+  {
+    "patient_id": "S1804006-4252983",
+    "study_id": "S1804006-4252983",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/4/S1804006-4252983.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 29.186301369863013,
+    "gender": "m"
+  },
+  {
+    "patient_id": "S1804020-4267323",
+    "study_id": "S1804020-4267323",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/4/S1804020-4267323.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 20.80821917808219,
+    "gender": "f"
+  },
+  {
+    "patient_id": "S1804036-3886774",
+    "study_id": "S1804036-3886774",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/4/S1804036-3886774.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 25.980821917808218,
+    "gender": "m"
+  },
+  {
+    "patient_id": "S1804045-4293606",
+    "study_id": "S1804045-4293606",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/4/S1804045-4293606.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 46.35,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1804094-4303733",
+    "study_id": "S1804094-4303733",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/4/S1804094-4303733.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 67.38,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1804103-4086492",
+    "study_id": "S1804103-4086492",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/4/S1804103-4086492.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 20.71,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1804108-4284513",
+    "study_id": "S1804108-4284513",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/4/S1804108-4284513.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 96.23,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1804125-4312915",
+    "study_id": "S1804125-4312915",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/4/S1804125-4312915.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 91.8,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1805026-4221431",
+    "study_id": "S1805026-4221431",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/5/S1805026-4221431.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 27.75,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1805033-4305218",
+    "study_id": "S1805033-4305218",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/5/S1805033-4305218.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 62.23,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1805048-4273597",
+    "study_id": "S1805048-4273597",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/5/S1805048-4273597.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 59.96,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1805084-4295299",
+    "study_id": "S1805084-4295299",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/5/S1805084-4295299.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 64.77,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1805086-4295305",
+    "study_id": "S1805086-4295305",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/5/S1805086-4295305.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 92.64,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1806024-4294884",
+    "study_id": "S1806024-4294884",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/6/S1806024-4294884.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 49.84,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1806025-4295844",
+    "study_id": "S1806025-4295844",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/6/S1806025-4295844.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 57.11,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1806029-4295851",
+    "study_id": "S1806029-4295851",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/6/S1806029-4295851.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 48.87,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1806035-4295929",
+    "study_id": "S1806035-4295929",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/6/S1806035-4295929.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 68.34,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1806037-4295950",
+    "study_id": "S1806037-4295950",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/6/S1806037-4295950.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 51.31,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1806042-4296129",
+    "study_id": "S1806042-4296129",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/6/S1806042-4296129.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 72.46,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1806047-4039935",
+    "study_id": "S1806047-4039935",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/6/S1806047-4039935.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 65.71,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1806049-4296321",
+    "study_id": "S1806049-4296321",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/6/S1806049-4296321.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 63.12,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1806053-4307056",
+    "study_id": "S1806053-4307056",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/6/S1806053-4307056.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 73.25,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1806058-4232052",
+    "study_id": "S1806058-4232052",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/6/S1806058-4232052.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 20.97,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1806063-4296416",
+    "study_id": "S1806063-4296416",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/6/S1806063-4296416.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 62.46,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1806064-4296429",
+    "study_id": "S1806064-4296429",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/6/S1806064-4296429.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 44.68,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1806065-4296424",
+    "study_id": "S1806065-4296424",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/6/S1806065-4296424.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 51.26,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1806074-4296356",
+    "study_id": "S1806074-4296356",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/6/S1806074-4296356.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 55.97,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1806076-3499184",
+    "study_id": "S1806076-3499184",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/6/S1806076-3499184.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 56.54,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1806083-4308004",
+    "study_id": "S1806083-4308004",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/6/S1806083-4308004.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 42.71,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1806084-3379569",
+    "study_id": "S1806084-3379569",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/6/S1806084-3379569.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 95.68,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1806086-4123017",
+    "study_id": "S1806086-4123017",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/6/S1806086-4123017.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 85.34,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1807043-4309175",
+    "study_id": "S1807043-4309175",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/7/S1807043-4309175.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 56.49,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1807045-4291222",
+    "study_id": "S1807045-4291222",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/7/S1807045-4291222.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 43.91,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1807046-4305984",
+    "study_id": "S1807046-4305984",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/7/S1807046-4305984.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 87.6,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1807052-4309527",
+    "study_id": "S1807052-4309527",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/7/S1807052-4309527.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 32.56,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1807058-4297203",
+    "study_id": "S1807058-4297203",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/7/S1807058-4297203.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 92.11,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1807063-4297332",
+    "study_id": "S1807063-4297332",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/7/S1807063-4297332.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 53.42,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1807066-4160832",
+    "study_id": "S1807066-4160832",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/7/S1807066-4160832.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 54.86,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1807069-4309769",
+    "study_id": "S1807069-4309769",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/7/S1807069-4309769.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 51.69,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1807096-4297494",
+    "study_id": "S1807096-4297494",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/7/S1807096-4297494.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 67.67,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1807101-4315564",
+    "study_id": "S1807101-4315564",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/7/S1807101-4315564.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 69.39,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1807107-4232581",
+    "study_id": "S1807107-4232581",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/7/S1807107-4232581.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 46.46,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1807108-4297635",
+    "study_id": "S1807108-4297635",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/7/S1807108-4297635.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 48.06,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1807111-4310560",
+    "study_id": "S1807111-4310560",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/7/S1807111-4310560.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 34.83,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1807113-4306927",
+    "study_id": "S1807113-4306927",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/7/S1807113-4306927.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 90.43,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1807123-4297838",
+    "study_id": "S1807123-4297838",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/7/S1807123-4297838.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 43.53,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1807125-4284221",
+    "study_id": "S1807125-4284221",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/7/S1807125-4284221.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 68.68,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1807127-4082153",
+    "study_id": "S1807127-4082153",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/7/S1807127-4082153.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 96.9,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1808005-4311399",
+    "study_id": "S1808005-4311399",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/8/S1808005-4311399.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 62.18,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1808007-4310367",
+    "study_id": "S1808007-4310367",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/8/S1808007-4310367.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 49.73,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1808017-4298065",
+    "study_id": "S1808017-4298065",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/8/S1808017-4298065.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 76.44,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1808046-4298406",
+    "study_id": "S1808046-4298406",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/8/S1808046-4298406.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 90.03,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1808051-4298495",
+    "study_id": "S1808051-4298495",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/8/S1808051-4298495.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 58.37,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1808059-4322212",
+    "study_id": "S1808059-4322212",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/8/S1808059-4322212.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 55.67,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1808063-4298642",
+    "study_id": "S1808063-4298642",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/8/S1808063-4298642.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 74.11,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1808065-4298658",
+    "study_id": "S1808065-4298658",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/8/S1808065-4298658.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 10.16,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1808077-3728570",
+    "study_id": "S1808077-3728570",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/8/S1808077-3728570.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 97.36,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1808087-4328918",
+    "study_id": "S1808087-4328918",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/8/S1808087-4328918.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 51.3,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1808090-3000782",
+    "study_id": "S1808090-3000782",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/8/S1808090-3000782.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 95.51,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1808095-2330761",
+    "study_id": "S1808095-2330761",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/8/S1808095-2330761.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 28.36,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1809029-4299365",
+    "study_id": "S1809029-4299365",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/9/S1809029-4299365.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 68.64,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1809031-4299385",
+    "study_id": "S1809031-4299385",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/9/S1809031-4299385.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 74.38,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1809040-4299519",
+    "study_id": "S1809040-4299519",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/9/S1809040-4299519.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 68.92,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1809044-4299536",
+    "study_id": "S1809044-4299536",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/9/S1809044-4299536.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 29.31,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1809045-4299638",
+    "study_id": "S1809045-4299638",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/9/S1809045-4299638.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 59.86,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1809074-4299926",
+    "study_id": "S1809074-4299926",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/9/S1809074-4299926.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 89.55,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1809084-4093474",
+    "study_id": "S1809084-4093474",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/9/S1809084-4093474.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 91.28,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1810053-3775136",
+    "study_id": "S1810053-3775136",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/10/S1810053-3775136.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 74.06,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1810069-4293606",
+    "study_id": "S1810069-4293606",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/10/S1810069-4293606.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 46.35,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1810112-4088500",
+    "study_id": "S1810112-4088500",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/10/S1810112-4088500.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 34.89,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1810126-4301072",
+    "study_id": "S1810126-4301072",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/10/S1810126-4301072.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 92.25,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1810128-4340250",
+    "study_id": "S1810128-4340250",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/10/S1810128-4340250.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 71.76,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1810142-4301004",
+    "study_id": "S1810142-4301004",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/10/S1810142-4301004.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 85.97,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1810153-4334949",
+    "study_id": "S1810153-4334949",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/10/S1810153-4334949.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 70.83,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1811051-4301823",
+    "study_id": "S1811051-4301823",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/11/S1811051-4301823.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 82.3,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1811055-4301931",
+    "study_id": "S1811055-4301931",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/11/S1811055-4301931.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 69.62,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1811057-4336847",
+    "study_id": "S1811057-4336847",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/11/S1811057-4336847.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 73.79,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1811058-4336843",
+    "study_id": "S1811058-4336843",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/11/S1811058-4336843.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 33.3,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1811073-4337533",
+    "study_id": "S1811073-4337533",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/11/S1811073-4337533.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 83.22,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1811088-4337086",
+    "study_id": "S1811088-4337086",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/11/S1811088-4337086.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 70.01,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1811090-4298605",
+    "study_id": "S1811090-4298605",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/11/S1811090-4298605.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 50.03,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1811093-4336673",
+    "study_id": "S1811093-4336673",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/11/S1811093-4336673.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 66.24,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1812050-4334716",
+    "study_id": "S1812050-4334716",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/12/S1812050-4334716.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 62.79,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1812051-4338733",
+    "study_id": "S1812051-4338733",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/12/S1812051-4338733.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 34.47,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1812052-4359858",
+    "study_id": "S1812052-4359858",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/12/S1812052-4359858.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 7.04,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1812091-4371110",
+    "study_id": "S1812091-4371110",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/12/S1812091-4371110.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 98.66,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1812092-4371104",
+    "study_id": "S1812092-4371104",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2018/12/S1812092-4371104.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 62.61,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1901108-4372304",
+    "study_id": "S1901108-4372304",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/1/S1901108-4372304.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 96.5,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1901117-4363123",
+    "study_id": "S1901117-4363123",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/1/S1901117-4363123.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 37.32,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1901119-4349307",
+    "study_id": "S1901119-4349307",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/1/S1901119-4349307.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 60.39,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1901120-3080372",
+    "study_id": "S1901120-3080372",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/1/S1901120-3080372.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 56.27,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1901124-4359792",
+    "study_id": "S1901124-4359792",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/1/S1901124-4359792.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 12.37,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1902002-4372537",
+    "study_id": "S1902002-4372537",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/2/S1902002-4372537.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 62.77,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1902006-4363287",
+    "study_id": "S1902006-4363287",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/2/S1902006-4363287.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 63.84,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1902007-4363965",
+    "study_id": "S1902007-4363965",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/2/S1902007-4363965.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 62.55,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1902014-4328926",
+    "study_id": "S1902014-4328926",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/2/S1902014-4328926.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 95.46,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1902018-4372707",
+    "study_id": "S1902018-4372707",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/2/S1902018-4372707.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 86.16,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1902019-4372701",
+    "study_id": "S1902019-4372701",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/2/S1902019-4372701.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 66.22,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1902020-4372739",
+    "study_id": "S1902020-4372739",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/2/S1902020-4372739.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 72.84,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1902021-3831424",
+    "study_id": "S1902021-3831424",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/2/S1902021-3831424.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 82.68,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1902022-4342204",
+    "study_id": "S1902022-4342204",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/2/S1902022-4342204.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 71.61,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1902023-4372768",
+    "study_id": "S1902023-4372768",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/2/S1902023-4372768.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 48.02,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1902026-4364155",
+    "study_id": "S1902026-4364155",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/2/S1902026-4364155.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 52.21,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1902027-4337907",
+    "study_id": "S1902027-4337907",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/2/S1902027-4337907.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 80.62,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1902029-4333189",
+    "study_id": "S1902029-4333189",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/2/S1902029-4333189.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 70.6,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1902032-4372841",
+    "study_id": "S1902032-4372841",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/2/S1902032-4372841.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 89.13,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1902034-3939251",
+    "study_id": "S1902034-3939251",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/2/S1902034-3939251.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 15.63,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1902036-4361701",
+    "study_id": "S1902036-4361701",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/2/S1902036-4361701.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 85.79,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1902042-4372920",
+    "study_id": "S1902042-4372920",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/2/S1902042-4372920.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 82.61,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1902044-4163598",
+    "study_id": "S1902044-4163598",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/2/S1902044-4163598.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 85.81,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1902047-4343431",
+    "study_id": "S1902047-4343431",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/2/S1902047-4343431.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 44.26,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1902054-4364851",
+    "study_id": "S1902054-4364851",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/2/S1902054-4364851.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 45.91,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1902055-2836010",
+    "study_id": "S1902055-2836010",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/2/S1902055-2836010.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 68.16,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1902056-4364963",
+    "study_id": "S1902056-4364963",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/2/S1902056-4364963.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 80.31,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1902059-4373246",
+    "study_id": "S1902059-4373246",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/2/S1902059-4373246.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 48.76,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1902064-3473875",
+    "study_id": "S1902064-3473875",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/2/S1902064-3473875.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 46.25,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1902065-4335824",
+    "study_id": "S1902065-4335824",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/2/S1902065-4335824.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 60.91,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1902066-4364414",
+    "study_id": "S1902066-4364414",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/2/S1902066-4364414.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 73.46,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1902070-4364225",
+    "study_id": "S1902070-4364225",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/2/S1902070-4364225.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 11.72,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1902072-4373424",
+    "study_id": "S1902072-4373424",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/2/S1902072-4373424.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 69.48,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1902074-4354469",
+    "study_id": "S1902074-4354469",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/2/S1902074-4354469.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 18.78,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1902078-4365605",
+    "study_id": "S1902078-4365605",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/2/S1902078-4365605.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 68.74,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1902079-4373482",
+    "study_id": "S1902079-4373482",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/2/S1902079-4373482.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 65.32,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1902080-4373515",
+    "study_id": "S1902080-4373515",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/2/S1902080-4373515.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 56.71,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1902087-4345007",
+    "study_id": "S1902087-4345007",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/2/S1902087-4345007.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 39.07,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1902090-4365593",
+    "study_id": "S1902090-4365593",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/2/S1902090-4365593.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 73.69,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1904010-4368689",
+    "study_id": "S1904010-4368689",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/4/S1904010-4368689.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 71.92,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1904015-4368819",
+    "study_id": "S1904015-4368819",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/4/S1904015-4368819.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 22.43,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1904016-4368231",
+    "study_id": "S1904016-4368231",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/4/S1904016-4368231.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 87.03,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1904019-4375048",
+    "study_id": "S1904019-4375048",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/4/S1904019-4375048.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 67.38,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1904020-4367458",
+    "study_id": "S1904020-4367458",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/4/S1904020-4367458.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 52.66,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1904024-4375262",
+    "study_id": "S1904024-4375262",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/4/S1904024-4375262.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 91.8,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1904026-4375299",
+    "study_id": "S1904026-4375299",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/4/S1904026-4375299.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 53.15,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1904027-4369343",
+    "study_id": "S1904027-4369343",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/4/S1904027-4369343.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 88.64,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1904036-4379005",
+    "study_id": "S1904036-4379005",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/4/S1904036-4379005.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 54.14,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1904041-4369034",
+    "study_id": "S1904041-4369034",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/4/S1904041-4369034.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 57.37,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1904046-4375524",
+    "study_id": "S1904046-4375524",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/4/S1904046-4375524.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 49.02,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1904059-4375759",
+    "study_id": "S1904059-4375759",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/4/S1904059-4375759.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 74.36,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1904066-4379418",
+    "study_id": "S1904066-4379418",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/4/S1904066-4379418.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 27.55,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1904067-4375588",
+    "study_id": "S1904067-4375588",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/4/S1904067-4375588.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 45.43,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1904068-4379509",
+    "study_id": "S1904068-4379509",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/4/S1904068-4379509.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 28.16,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1904072-4388963",
+    "study_id": "S1904072-4388963",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/4/S1904072-4388963.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 70.07,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1904086-4379917",
+    "study_id": "S1904086-4379917",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/4/S1904086-4379917.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 53.52,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1904089-4389009",
+    "study_id": "S1904089-4389009",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/4/S1904089-4389009.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 39.08,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1906008-4390508",
+    "study_id": "S1906008-4390508",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/6/S1906008-4390508.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 77.58,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1906010-4390562",
+    "study_id": "S1906010-4390562",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/6/S1906010-4390562.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 51.96,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1906013-4390615",
+    "study_id": "S1906013-4390615",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/6/S1906013-4390615.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 65.15,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1906015-4390797",
+    "study_id": "S1906015-4390797",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/6/S1906015-4390797.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 78.05,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1906018-4369027",
+    "study_id": "S1906018-4369027",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/6/S1906018-4369027.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 36.86,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1906019-4390842",
+    "study_id": "S1906019-4390842",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/6/S1906019-4390842.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 57.94,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1906020-4390847",
+    "study_id": "S1906020-4390847",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/6/S1906020-4390847.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 88.9,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1906029-4382532",
+    "study_id": "S1906029-4382532",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/6/S1906029-4382532.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 60.64,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1906032-3676893",
+    "study_id": "S1906032-3676893",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/6/S1906032-3676893.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 28.59,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1906033-2888378",
+    "study_id": "S1906033-2888378",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/6/S1906033-2888378.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 47.7,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1906034-4391000",
+    "study_id": "S1906034-4391000",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/6/S1906034-4391000.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 57.51,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1906062-4391347",
+    "study_id": "S1906062-4391347",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/6/S1906062-4391347.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 93.72,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1906063-4391350",
+    "study_id": "S1906063-4391350",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/6/S1906063-4391350.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 68.73,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1906070-3958399",
+    "study_id": "S1906070-3958399",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/6/S1906070-3958399.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 26.63,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1906072-4391419",
+    "study_id": "S1906072-4391419",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/6/S1906072-4391419.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 88.49,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1906076-4365841",
+    "study_id": "S1906076-4365841",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/6/S1906076-4365841.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 56.41,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1906077-2926304",
+    "study_id": "S1906077-2926304",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/6/S1906077-2926304.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 45.38,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1906089-4391596",
+    "study_id": "S1906089-4391596",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/6/S1906089-4391596.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 60.42,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1907011-4391669",
+    "study_id": "S1907011-4391669",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/7/S1907011-4391669.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 73.65,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1907018-4404862",
+    "study_id": "S1907018-4404862",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/7/S1907018-4404862.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 56.33,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1907019-4404690",
+    "study_id": "S1907019-4404690",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/7/S1907019-4404690.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 72.35,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1907022-4383778",
+    "study_id": "S1907022-4383778",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/7/S1907022-4383778.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 25.66,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1907023-4255294",
+    "study_id": "S1907023-4255294",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/7/S1907023-4255294.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 25.29,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1907024-4391767",
+    "study_id": "S1907024-4391767",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/7/S1907024-4391767.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 95.37,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1907025-4391771",
+    "study_id": "S1907025-4391771",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/7/S1907025-4391771.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 89.13,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1907026-4391803",
+    "study_id": "S1907026-4391803",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/7/S1907026-4391803.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 72.73,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1907028-4391846",
+    "study_id": "S1907028-4391846",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/7/S1907028-4391846.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 51.31,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1907031-4396965",
+    "study_id": "S1907031-4396965",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/7/S1907031-4396965.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 51.7,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1907034-4385334",
+    "study_id": "S1907034-4385334",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/7/S1907034-4385334.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 97.75,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1907037-3804839",
+    "study_id": "S1907037-3804839",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/7/S1907037-3804839.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 67.92,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1907040-4385509",
+    "study_id": "S1907040-4385509",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/7/S1907040-4385509.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 72.73,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1907044-4314883",
+    "study_id": "S1907044-4314883",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/7/S1907044-4314883.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 43.66,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1907045-4364036",
+    "study_id": "S1907045-4364036",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/7/S1907045-4364036.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 53.51,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1907052-4392093",
+    "study_id": "S1907052-4392093",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/7/S1907052-4392093.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 65.25,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1907053-4392106",
+    "study_id": "S1907053-4392106",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/7/S1907053-4392106.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 74.08,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1907054-4392108",
+    "study_id": "S1907054-4392108",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/7/S1907054-4392108.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 61.89,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1907055-4385202",
+    "study_id": "S1907055-4385202",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/7/S1907055-4385202.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 86.61,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1907061-4392115",
+    "study_id": "S1907061-4392115",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/7/S1907061-4392115.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 67.94,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1907062-4385948",
+    "study_id": "S1907062-4385948",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/7/S1907062-4385948.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 54.58,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1907063-4392144",
+    "study_id": "S1907063-4392144",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/7/S1907063-4392144.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 47.69,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1907064-4392147",
+    "study_id": "S1907064-4392147",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/7/S1907064-4392147.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 10.72,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1907069-4392183",
+    "study_id": "S1907069-4392183",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/7/S1907069-4392183.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 71.41,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1907070-4392187",
+    "study_id": "S1907070-4392187",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/7/S1907070-4392187.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 56.31,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1907075-3661956",
+    "study_id": "S1907075-3661956",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/7/S1907075-3661956.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 18.53,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1907080-4392284",
+    "study_id": "S1907080-4392284",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/7/S1907080-4392284.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 81.03,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1907082-4223207",
+    "study_id": "S1907082-4223207",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/7/S1907082-4223207.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 52.88,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1907084-4333714",
+    "study_id": "S1907084-4333714",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/7/S1907084-4333714.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 50.22,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1907085-4385403",
+    "study_id": "S1907085-4385403",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/7/S1907085-4385403.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 57.17,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1907087-4392432",
+    "study_id": "S1907087-4392432",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/7/S1907087-4392432.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 45.04,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1907090-4097048",
+    "study_id": "S1907090-4097048",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/7/S1907090-4097048.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 51.72,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1907092-3565097",
+    "study_id": "S1907092-3565097",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/7/S1907092-3565097.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 80.98,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1907104-3045186",
+    "study_id": "S1907104-3045186",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/7/S1907104-3045186.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 60.57,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1907106-4309182",
+    "study_id": "S1907106-4309182",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/7/S1907106-4309182.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 44.43,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1907107-4387190",
+    "study_id": "S1907107-4387190",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/7/S1907107-4387190.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 65.48,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1907109-2897479",
+    "study_id": "S1907109-2897479",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/7/S1907109-2897479.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 34.47,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1907111-2129084",
+    "study_id": "S1907111-2129084",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/7/S1907111-2129084.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 31.89,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1907115-4097515",
+    "study_id": "S1907115-4097515",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/7/S1907115-4097515.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 42.47,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1908002-4392711",
+    "study_id": "S1908002-4392711",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/8/S1908002-4392711.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 34.83,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1908005-4381825",
+    "study_id": "S1908005-4381825",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/8/S1908005-4381825.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 71.29,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1908006-4392764",
+    "study_id": "S1908006-4392764",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/8/S1908006-4392764.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 51.48,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1908007-4061900",
+    "study_id": "S1908007-4061900",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/8/S1908007-4061900.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 73.49,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1908008-4392796",
+    "study_id": "S1908008-4392796",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/8/S1908008-4392796.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 53.66,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1908011-4392843",
+    "study_id": "S1908011-4392843",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/8/S1908011-4392843.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 52.21,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1908013-4386381",
+    "study_id": "S1908013-4386381",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/8/S1908013-4386381.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 11.53,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1908015-4387861",
+    "study_id": "S1908015-4387861",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/8/S1908015-4387861.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 71.2,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1908017-4387979",
+    "study_id": "S1908017-4387979",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/8/S1908017-4387979.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 63.93,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1908018-4392903",
+    "study_id": "S1908018-4392903",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/8/S1908018-4392903.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 73.14,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1908020-3811162",
+    "study_id": "S1908020-3811162",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/8/S1908020-3811162.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 71.79,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1908021-4392914",
+    "study_id": "S1908021-4392914",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/8/S1908021-4392914.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 59.07,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1908023-4392944",
+    "study_id": "S1908023-4392944",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/8/S1908023-4392944.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 71.45,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1908026-4406274",
+    "study_id": "S1908026-4406274",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/8/S1908026-4406274.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 43.59,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1908033-4386553",
+    "study_id": "S1908033-4386553",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/8/S1908033-4386553.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 58.06,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1908038-4388509",
+    "study_id": "S1908038-4388509",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/8/S1908038-4388509.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 78.13,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1908039-4393130",
+    "study_id": "S1908039-4393130",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/8/S1908039-4393130.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 58.74,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1908043-4388623",
+    "study_id": "S1908043-4388623",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/8/S1908043-4388623.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 43.03,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1908044-4388621",
+    "study_id": "S1908044-4388621",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/8/S1908044-4388621.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 49.87,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1908050-4378109",
+    "study_id": "S1908050-4378109",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/8/S1908050-4378109.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 51.49,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1908052-4392905",
+    "study_id": "S1908052-4392905",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/8/S1908052-4392905.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 44.06,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1908053-3068020",
+    "study_id": "S1908053-3068020",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/8/S1908053-3068020.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 28.05,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1908055-4386290",
+    "study_id": "S1908055-4386290",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/8/S1908055-4386290.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 42.28,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1908060-4383551",
+    "study_id": "S1908060-4383551",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/8/S1908060-4383551.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 28.61,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1908066-3748709",
+    "study_id": "S1908066-3748709",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/8/S1908066-3748709.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 74.91,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1908072-4416635",
+    "study_id": "S1908072-4416635",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/8/S1908072-4416635.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 70.72,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1908077-4348707",
+    "study_id": "S1908077-4348707",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/8/S1908077-4348707.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 66.71,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1908078-4416687",
+    "study_id": "S1908078-4416687",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/8/S1908078-4416687.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 44.67,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1908083-3390263",
+    "study_id": "S1908083-3390263",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/8/S1908083-3390263.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 41.72,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1908084-4388749",
+    "study_id": "S1908084-4388749",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/8/S1908084-4388749.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 33.9,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1908094-4417183",
+    "study_id": "S1908094-4417183",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/8/S1908094-4417183.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 64.55,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1908097-4406731",
+    "study_id": "S1908097-4406731",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/8/S1908097-4406731.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 90.1,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1908099-4388717",
+    "study_id": "S1908099-4388717",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/8/S1908099-4388717.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 55.68,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1908104-4406966",
+    "study_id": "S1908104-4406966",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/8/S1908104-4406966.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 74.09,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1908106-4140513",
+    "study_id": "S1908106-4140513",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/8/S1908106-4140513.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 54.31,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1908109-4417413",
+    "study_id": "S1908109-4417413",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/8/S1908109-4417413.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 44.95,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1908110-4267691",
+    "study_id": "S1908110-4267691",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/8/S1908110-4267691.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 71.56,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1909009-4407155",
+    "study_id": "S1909009-4407155",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/9/S1909009-4407155.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 74.76,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1909010-4393632",
+    "study_id": "S1909010-4393632",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/9/S1909010-4393632.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 10.7,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1909018-4426495",
+    "study_id": "S1909018-4426495",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/9/S1909018-4426495.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 47.89,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1909027-4200555",
+    "study_id": "S1909027-4200555",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/9/S1909027-4200555.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 60.62,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1909029-4418196",
+    "study_id": "S1909029-4418196",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/9/S1909029-4418196.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 67.31,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1909032-3703003",
+    "study_id": "S1909032-3703003",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/9/S1909032-3703003.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 69.17,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1909034-4426680",
+    "study_id": "S1909034-4426680",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/9/S1909034-4426680.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 72.25,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1909037-4386538",
+    "study_id": "S1909037-4386538",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/9/S1909037-4386538.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 49.47,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1909042-4426837",
+    "study_id": "S1909042-4426837",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/9/S1909042-4426837.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 37.43,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1909054-4418898",
+    "study_id": "S1909054-4418898",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/9/S1909054-4418898.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 74.5,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1909055-4416931",
+    "study_id": "S1909055-4416931",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/9/S1909055-4416931.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 62.08,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1909057-4419352",
+    "study_id": "S1909057-4419352",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/9/S1909057-4419352.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 93.15,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1909058-4418903",
+    "study_id": "S1909058-4418903",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/9/S1909058-4418903.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 56.01,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1909059-4427015",
+    "study_id": "S1909059-4427015",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/9/S1909059-4427015.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 52.75,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1909061-4417004",
+    "study_id": "S1909061-4417004",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/9/S1909061-4417004.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 53.64,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1909067-4427071",
+    "study_id": "S1909067-4427071",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/9/S1909067-4427071.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 47.33,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1909071-3521398",
+    "study_id": "S1909071-3521398",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/9/S1909071-3521398.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 46.95,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1909080-4418356",
+    "study_id": "S1909080-4418356",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/9/S1909080-4418356.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 89.71,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1909081-4420065",
+    "study_id": "S1909081-4420065",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/9/S1909081-4420065.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 86.59,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1909082-4391624",
+    "study_id": "S1909082-4391624",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/9/S1909082-4391624.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 47.74,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1909086-4427309",
+    "study_id": "S1909086-4427309",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/9/S1909086-4427309.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 65.55,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1909090-4025561",
+    "study_id": "S1909090-4025561",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/9/S1909090-4025561.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 74.42,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1910002-4419988",
+    "study_id": "S1910002-4419988",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/10/S1910002-4419988.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 77.28,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1910003-4288231",
+    "study_id": "S1910003-4288231",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/10/S1910003-4288231.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 32.44,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1910008-4427680",
+    "study_id": "S1910008-4427680",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/10/S1910008-4427680.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 32.36,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1910009-4427626",
+    "study_id": "S1910009-4427626",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/10/S1910009-4427626.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 69.11,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1910011-3886980",
+    "study_id": "S1910011-3886980",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/10/S1910011-3886980.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 94.95,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1910017-4421976",
+    "study_id": "S1910017-4421976",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/10/S1910017-4421976.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 93.42,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1910021-4215174",
+    "study_id": "S1910021-4215174",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/10/S1910021-4215174.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 58.32,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1912001-3897193",
+    "study_id": "S1912001-3897193",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/12/S1912001-3897193.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 64.12,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1912003-4429593",
+    "study_id": "S1912003-4429593",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/12/S1912003-4429593.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 60.08,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1912006-4429603",
+    "study_id": "S1912006-4429603",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/12/S1912006-4429603.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 84.58,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1912007-4425919",
+    "study_id": "S1912007-4425919",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/12/S1912007-4425919.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 65.98,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1912012-4429646",
+    "study_id": "S1912012-4429646",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/12/S1912012-4429646.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 74.18,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1912014-4426130",
+    "study_id": "S1912014-4426130",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/12/S1912014-4426130.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 38.1,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1912016-4429682",
+    "study_id": "S1912016-4429682",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/12/S1912016-4429682.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 60.39,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1912017-4429688",
+    "study_id": "S1912017-4429688",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/12/S1912017-4429688.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 86.89,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1912018-4424312",
+    "study_id": "S1912018-4424312",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/12/S1912018-4424312.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 40.62,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1912027-4443857",
+    "study_id": "S1912027-4443857",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/12/S1912027-4443857.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 97.07,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1912037-4443702",
+    "study_id": "S1912037-4443702",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/12/S1912037-4443702.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 65.67,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1912048-4430055",
+    "study_id": "S1912048-4430055",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/12/S1912048-4430055.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 72.02,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1912057-4409205",
+    "study_id": "S1912057-4409205",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/12/S1912057-4409205.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 54.01,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S1912059-3208192",
+    "study_id": "S1912059-3208192",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/12/S1912059-3208192.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 81.99,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S1912065-4430180",
+    "study_id": "S1912065-4430180",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2019/12/S1912065-4430180.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 64.11,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2001009-4431199",
+    "study_id": "S2001009-4431199",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/1/S2001009-4431199.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 50.87,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2001010-3715704",
+    "study_id": "S2001010-3715704",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/1/S2001010-3715704.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 91.51,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S2001012-3230131",
+    "study_id": "S2001012-3230131",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/1/S2001012-3230131.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 92.21,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S2001017-4453605",
+    "study_id": "S2001017-4453605",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/1/S2001017-4453605.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 57.85,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2001018-4453608",
+    "study_id": "S2001018-4453608",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/1/S2001018-4453608.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 53.26,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2001022-4431207",
+    "study_id": "S2001022-4431207",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/1/S2001022-4431207.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 46.55,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2001029-4446973",
+    "study_id": "S2001029-4446973",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/1/S2001029-4446973.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 39.7,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2002001-4454686",
+    "study_id": "S2002001-4454686",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/2/S2002001-4454686.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 60.71,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2002004-3698011",
+    "study_id": "S2002004-3698011",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/2/S2002004-3698011.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 43.45,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2002018-4454970",
+    "study_id": "S2002018-4454970",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/2/S2002018-4454970.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 58.06,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2002021-4454986",
+    "study_id": "S2002021-4454986",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/2/S2002021-4454986.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 73.71,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S2002023-4421367",
+    "study_id": "S2002023-4421367",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/2/S2002023-4421367.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 60.38,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2002024-2815920",
+    "study_id": "S2002024-2815920",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/2/S2002024-2815920.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 80.85,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S2002025-4056945",
+    "study_id": "S2002025-4056945",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/2/S2002025-4056945.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 45.3,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2003001-4455371",
+    "study_id": "S2003001-4455371",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/3/S2003001-4455371.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 45.65,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2003008-4451726",
+    "study_id": "S2003008-4451726",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/3/S2003008-4451726.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 30.25,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2003010-4452086",
+    "study_id": "S2003010-4452086",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/3/S2003010-4452086.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 81.0,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S2003014-4461656",
+    "study_id": "S2003014-4461656",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/3/S2003014-4461656.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 51.9,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2003023-4409387",
+    "study_id": "S2003023-4409387",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/3/S2003023-4409387.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 69.27,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2004010-4456927",
+    "study_id": "S2004010-4456927",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/4/S2004010-4456927.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 67.83,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2005001-4457399",
+    "study_id": "S2005001-4457399",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/5/S2005001-4457399.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 63.81,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2005004-4457734",
+    "study_id": "S2005004-4457734",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/5/S2005004-4457734.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 42.37,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2005006-4457736",
+    "study_id": "S2005006-4457736",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/5/S2005006-4457736.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 26.58,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2005008-4457743",
+    "study_id": "S2005008-4457743",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/5/S2005008-4457743.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 91.4,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S2005013-4457787",
+    "study_id": "S2005013-4457787",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/5/S2005013-4457787.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 60.88,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2005022-4470001",
+    "study_id": "S2005022-4470001",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/5/S2005022-4470001.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 74.36,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S2005026-4457916",
+    "study_id": "S2005026-4457916",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/5/S2005026-4457916.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 48.64,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2005029-4179802",
+    "study_id": "S2005029-4179802",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/5/S2005029-4179802.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 62.58,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2005030-4457860",
+    "study_id": "S2005030-4457860",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/5/S2005030-4457860.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 77.04,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S2005033-4458026",
+    "study_id": "S2005033-4458026",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/5/S2005033-4458026.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 83.21,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S2005034-4453480",
+    "study_id": "S2005034-4453480",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/5/S2005034-4453480.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 95.16,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S2005035-4458065",
+    "study_id": "S2005035-4458065",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/5/S2005035-4458065.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 74.75,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S2005042-4479624",
+    "study_id": "S2005042-4479624",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/5/S2005042-4479624.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 68.95,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2005044-4455829",
+    "study_id": "S2005044-4455829",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/5/S2005044-4455829.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 60.21,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2005047-4458405",
+    "study_id": "S2005047-4458405",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/5/S2005047-4458405.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 69.16,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2005048-4458406",
+    "study_id": "S2005048-4458406",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/5/S2005048-4458406.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 53.33,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2005049-4458415",
+    "study_id": "S2005049-4458415",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/5/S2005049-4458415.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 71.08,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2005051-4458489",
+    "study_id": "S2005051-4458489",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/5/S2005051-4458489.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 55.23,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2005052-4458491",
+    "study_id": "S2005052-4458491",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/5/S2005052-4458491.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 96.28,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S2005053-4449474",
+    "study_id": "S2005053-4449474",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/5/S2005053-4449474.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 73.87,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S2005056-4458564",
+    "study_id": "S2005056-4458564",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/5/S2005056-4458564.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 54.91,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2006001-4085288",
+    "study_id": "S2006001-4085288",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/6/S2006001-4085288.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 23.83,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2006008-4480035",
+    "study_id": "S2006008-4480035",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/6/S2006008-4480035.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 87.78,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S2006014-4491378",
+    "study_id": "S2006014-4491378",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/6/S2006014-4491378.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 74.93,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S2006015-4491396",
+    "study_id": "S2006015-4491396",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/6/S2006015-4491396.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 55.47,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2006019-4444545",
+    "study_id": "S2006019-4444545",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/6/S2006019-4444545.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 10.14,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2006021-4183980",
+    "study_id": "S2006021-4183980",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/6/S2006021-4183980.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 72.97,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2006022-4480249",
+    "study_id": "S2006022-4480249",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/6/S2006022-4480249.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 96.68,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S2006024-4480046",
+    "study_id": "S2006024-4480046",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/6/S2006024-4480046.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 46.92,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2006036-4491643",
+    "study_id": "S2006036-4491643",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/6/S2006036-4491643.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 46.52,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2006037-4414496",
+    "study_id": "S2006037-4414496",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/6/S2006037-4414496.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 40.02,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2006038-4491648",
+    "study_id": "S2006038-4491648",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/6/S2006038-4491648.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 61.29,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2006041-4491651",
+    "study_id": "S2006041-4491651",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/6/S2006041-4491651.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 5.83,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2006063-4491879",
+    "study_id": "S2006063-4491879",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/6/S2006063-4491879.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 65.71,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2006065-4452024",
+    "study_id": "S2006065-4452024",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/6/S2006065-4452024.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 14.91,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2006066-4480878",
+    "study_id": "S2006066-4480878",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/6/S2006066-4480878.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 65.76,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2006071-4491935",
+    "study_id": "S2006071-4491935",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/6/S2006071-4491935.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 59.72,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2006072-4283254",
+    "study_id": "S2006072-4283254",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/6/S2006072-4283254.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 4.6,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2006081-4491973",
+    "study_id": "S2006081-4491973",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/6/S2006081-4491973.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 23.64,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2006084-4491823",
+    "study_id": "S2006084-4491823",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/6/S2006084-4491823.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 96.96,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S2006089-4481130",
+    "study_id": "S2006089-4481130",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/6/S2006089-4481130.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 78.37,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S2006092-4481306",
+    "study_id": "S2006092-4481306",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/6/S2006092-4481306.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 83.23,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S2006096-4025049",
+    "study_id": "S2006096-4025049",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/6/S2006096-4025049.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 66.61,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2006099-4452651",
+    "study_id": "S2006099-4452651",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/6/S2006099-4452651.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 46.28,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2007004-4332364",
+    "study_id": "S2007004-4332364",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/7/S2007004-4332364.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 71.95,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2007005-4252711",
+    "study_id": "S2007005-4252711",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/7/S2007005-4252711.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 46.44,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2007007-4492276",
+    "study_id": "S2007007-4492276",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/7/S2007007-4492276.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 70.53,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2007014-4492342",
+    "study_id": "S2007014-4492342",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/7/S2007014-4492342.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 88.35,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S2007020-4492474",
+    "study_id": "S2007020-4492474",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/7/S2007020-4492474.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 59.53,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2007033-4481813",
+    "study_id": "S2007033-4481813",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/7/S2007033-4481813.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 89.63,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S2007039-4492646",
+    "study_id": "S2007039-4492646",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/7/S2007039-4492646.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 79.03,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S2007049-4492806",
+    "study_id": "S2007049-4492806",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/7/S2007049-4492806.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 71.66,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2007050-4492815",
+    "study_id": "S2007050-4492815",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/7/S2007050-4492815.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 67.92,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2007054-4026801",
+    "study_id": "S2007054-4026801",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/7/S2007054-4026801.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 65.24,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2007056-4461926",
+    "study_id": "S2007056-4461926",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/7/S2007056-4461926.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 21.52,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2007057-4491825",
+    "study_id": "S2007057-4491825",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/7/S2007057-4491825.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 85.13,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S2007069-4493029",
+    "study_id": "S2007069-4493029",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/7/S2007069-4493029.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 78.17,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S2007074-4493080",
+    "study_id": "S2007074-4493080",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/7/S2007074-4493080.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 69.47,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2007077-4493113",
+    "study_id": "S2007077-4493113",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/7/S2007077-4493113.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 65.27,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2007080-4483065",
+    "study_id": "S2007080-4483065",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/7/S2007080-4483065.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 61.96,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2007084-4481038",
+    "study_id": "S2007084-4481038",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/7/S2007084-4481038.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 27.99,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2007085-4493218",
+    "study_id": "S2007085-4493218",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/7/S2007085-4493218.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 53.91,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2007086-4483281",
+    "study_id": "S2007086-4483281",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/7/S2007086-4483281.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 87.76,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S2007090-4493248",
+    "study_id": "S2007090-4493248",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/7/S2007090-4493248.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 56.71,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2007091-4493263",
+    "study_id": "S2007091-4493263",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/7/S2007091-4493263.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 50.75,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2008001-4493512",
+    "study_id": "S2008001-4493512",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/8/S2008001-4493512.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 74.65,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S2008005-4483707",
+    "study_id": "S2008005-4483707",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/8/S2008005-4483707.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 69.7,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2008006-4483945",
+    "study_id": "S2008006-4483945",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/8/S2008006-4483945.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 41.55,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2008008-4481126",
+    "study_id": "S2008008-4481126",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/8/S2008008-4481126.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 67.58,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2008010-4484098",
+    "study_id": "S2008010-4484098",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/8/S2008010-4484098.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 71.85,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2008021-3844527",
+    "study_id": "S2008021-3844527",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/8/S2008021-3844527.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 30.31,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2008022-4484354",
+    "study_id": "S2008022-4484354",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/8/S2008022-4484354.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 50.88,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2008026-4451803",
+    "study_id": "S2008026-4451803",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/8/S2008026-4451803.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 95.0,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S2008027-4458301",
+    "study_id": "S2008027-4458301",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/8/S2008027-4458301.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 65.12,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2008029-4483844",
+    "study_id": "S2008029-4483844",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/8/S2008029-4483844.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 74.66,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S2008030-4492958",
+    "study_id": "S2008030-4492958",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/8/S2008030-4492958.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 73.38,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2008035-4212298",
+    "study_id": "S2008035-4212298",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/8/S2008035-4212298.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 67.9,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2008037-4494430",
+    "study_id": "S2008037-4494430",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/8/S2008037-4494430.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 53.72,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2008041-4493677",
+    "study_id": "S2008041-4493677",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/8/S2008041-4493677.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 47.77,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2008042-4493558",
+    "study_id": "S2008042-4493558",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/8/S2008042-4493558.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 72.16,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2008048-4493334",
+    "study_id": "S2008048-4493334",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/8/S2008048-4493334.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 80.77,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S2008050-4492573",
+    "study_id": "S2008050-4492573",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/8/S2008050-4492573.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 66.0,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2008051-4493387",
+    "study_id": "S2008051-4493387",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/8/S2008051-4493387.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 70.61,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2008053-4494477",
+    "study_id": "S2008053-4494477",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/8/S2008053-4494477.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 73.6,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S2008057-4493840",
+    "study_id": "S2008057-4493840",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/8/S2008057-4493840.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 69.8,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2008059-3694979",
+    "study_id": "S2008059-3694979",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/8/S2008059-3694979.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 70.33,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2008061-4388284",
+    "study_id": "S2008061-4388284",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/8/S2008061-4388284.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 59.97,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2008068-4494061",
+    "study_id": "S2008068-4494061",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/8/S2008068-4494061.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 98.16,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S2008069-4480407",
+    "study_id": "S2008069-4480407",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/8/S2008069-4480407.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 57.7,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2008070-4446510",
+    "study_id": "S2008070-4446510",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/8/S2008070-4446510.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 70.8,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2009001-3704447",
+    "study_id": "S2009001-3704447",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/9/S2009001-3704447.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 89.58,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S2009002-4483753",
+    "study_id": "S2009002-4483753",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/9/S2009002-4483753.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 92.84,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S2009004-4479808",
+    "study_id": "S2009004-4479808",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/9/S2009004-4479808.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 66.3,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2009005-4494857",
+    "study_id": "S2009005-4494857",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/9/S2009005-4494857.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 87.88,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S2009012-4475410",
+    "study_id": "S2009012-4475410",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/9/S2009012-4475410.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 71.22,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2009014-3956528",
+    "study_id": "S2009014-3956528",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/9/S2009014-3956528.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 35.74,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2009015-4493860",
+    "study_id": "S2009015-4493860",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/9/S2009015-4493860.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 54.68,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2009019-4486015",
+    "study_id": "S2009019-4486015",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/9/S2009019-4486015.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 66.72,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2009022-4495016",
+    "study_id": "S2009022-4495016",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/9/S2009022-4495016.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 49.26,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2009026-4450266",
+    "study_id": "S2009026-4450266",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/9/S2009026-4450266.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 71.65,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2009027-4486130",
+    "study_id": "S2009027-4486130",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/9/S2009027-4486130.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 69.69,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2009028-4495074",
+    "study_id": "S2009028-4495074",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/9/S2009028-4495074.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 41.24,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2009035-4484941",
+    "study_id": "S2009035-4484941",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/9/S2009035-4484941.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 47.27,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2009039-4473912",
+    "study_id": "S2009039-4473912",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/9/S2009039-4473912.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 95.73,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S2009051-4495262",
+    "study_id": "S2009051-4495262",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/9/S2009051-4495262.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 29.77,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2009052-3841782",
+    "study_id": "S2009052-3841782",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/9/S2009052-3841782.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 42.06,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2009054-4494053",
+    "study_id": "S2009054-4494053",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/9/S2009054-4494053.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 57.97,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2009059-4495340",
+    "study_id": "S2009059-4495340",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/9/S2009059-4495340.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 90.48,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S2009064-4486909",
+    "study_id": "S2009064-4486909",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/9/S2009064-4486909.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 39.21,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2009065-4485374",
+    "study_id": "S2009065-4485374",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/9/S2009065-4485374.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 53.69,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2009069-4486910",
+    "study_id": "S2009069-4486910",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/9/S2009069-4486910.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 59.33,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2009070-4487269",
+    "study_id": "S2009070-4487269",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/9/S2009070-4487269.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 63.53,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2009077-4495470",
+    "study_id": "S2009077-4495470",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/9/S2009077-4495470.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 66.55,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2009078-4495512",
+    "study_id": "S2009078-4495512",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/9/S2009078-4495512.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 87.54,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S2009079-4474453",
+    "study_id": "S2009079-4474453",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/9/S2009079-4474453.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 60.88,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2009080-4495542",
+    "study_id": "S2009080-4495542",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/9/S2009080-4495542.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 98.92,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S2009081-4487407",
+    "study_id": "S2009081-4487407",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/9/S2009081-4487407.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 73.52,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S2009082-2947477",
+    "study_id": "S2009082-2947477",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/9/S2009082-2947477.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 28.38,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2009084-4495545",
+    "study_id": "S2009084-4495545",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/9/S2009084-4495545.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 72.6,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2009087-4495599",
+    "study_id": "S2009087-4495599",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/9/S2009087-4495599.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 53.18,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2009090-4486210",
+    "study_id": "S2009090-4486210",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/9/S2009090-4486210.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 57.27,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2009094-4446116",
+    "study_id": "S2009094-4446116",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/9/S2009094-4446116.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 96.26,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S2009098-4495660",
+    "study_id": "S2009098-4495660",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/9/S2009098-4495660.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 71.29,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2009105-4193352",
+    "study_id": "S2009105-4193352",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/9/S2009105-4193352.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 33.14,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2009106-4431459",
+    "study_id": "S2009106-4431459",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/9/S2009106-4431459.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 79.46,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S2009109-1553597",
+    "study_id": "S2009109-1553597",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/9/S2009109-1553597.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 7.97,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2010002-4486531",
+    "study_id": "S2010002-4486531",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/10/S2010002-4486531.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 71.1,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2010009-4487718",
+    "study_id": "S2010009-4487718",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/10/S2010009-4487718.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 57.18,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2010015-4476953",
+    "study_id": "S2010015-4476953",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/10/S2010015-4476953.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 77.46,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S2010018-4487980",
+    "study_id": "S2010018-4487980",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/10/S2010018-4487980.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 57.58,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2010019-4486809",
+    "study_id": "S2010019-4486809",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/10/S2010019-4486809.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 50.73,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2010022-4488037",
+    "study_id": "S2010022-4488037",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/10/S2010022-4488037.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 73.18,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2010023-4488205",
+    "study_id": "S2010023-4488205",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/10/S2010023-4488205.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 52.43,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2010026-4488337",
+    "study_id": "S2010026-4488337",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/10/S2010026-4488337.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 44.75,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2010036-4181756",
+    "study_id": "S2010036-4181756",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/10/S2010036-4181756.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 18.49,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2010037-4498508",
+    "study_id": "S2010037-4498508",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/10/S2010037-4498508.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 76.6,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S2010043-4498572",
+    "study_id": "S2010043-4498572",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/10/S2010043-4498572.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 93.38,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S2010050-4488214",
+    "study_id": "S2010050-4488214",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/10/S2010050-4488214.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 79.25,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S2010057-4488890",
+    "study_id": "S2010057-4488890",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/10/S2010057-4488890.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 67.15,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2010059-4486832",
+    "study_id": "S2010059-4486832",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/10/S2010059-4486832.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 72.03,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2010065-4498789",
+    "study_id": "S2010065-4498789",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/10/S2010065-4498789.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 88.25,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S2010068-4498848",
+    "study_id": "S2010068-4498848",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/10/S2010068-4498848.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 90.61,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S2010071-4488653",
+    "study_id": "S2010071-4488653",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/10/S2010071-4488653.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 72.18,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2010079-4493901",
+    "study_id": "S2010079-4493901",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/10/S2010079-4493901.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 73.38,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2010080-4414250",
+    "study_id": "S2010080-4414250",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/10/S2010080-4414250.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 47.51,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2010081-4489114",
+    "study_id": "S2010081-4489114",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/10/S2010081-4489114.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 67.08,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2010085-4499071",
+    "study_id": "S2010085-4499071",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/10/S2010085-4499071.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 68.82,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2010090-4489570",
+    "study_id": "S2010090-4489570",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/10/S2010090-4489570.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 55.39,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2010092-4499195",
+    "study_id": "S2010092-4499195",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/10/S2010092-4499195.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 95.06,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S2010093-4464811",
+    "study_id": "S2010093-4464811",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/10/S2010093-4464811.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 83.93,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S2010100-4499381",
+    "study_id": "S2010100-4499381",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/10/S2010100-4499381.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 92.0,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S2012001-4500972",
+    "study_id": "S2012001-4500972",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/12/S2012001-4500972.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 67.86,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2012002-4292975",
+    "study_id": "S2012002-4292975",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/12/S2012002-4292975.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 74.55,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S2012010-4470889",
+    "study_id": "S2012010-4470889",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/12/S2012010-4470889.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 93.6,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S2012011-4461881",
+    "study_id": "S2012011-4461881",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/12/S2012011-4461881.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 49.91,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2012012-4505649",
+    "study_id": "S2012012-4505649",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/12/S2012012-4505649.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 2.15,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2012013-4501022",
+    "study_id": "S2012013-4501022",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/12/S2012013-4501022.dcm",
+    "domain": "cxr_rait",
+    "label": 1,
+    "age": 90.58,
+    "gender": "1"
+  },
+  {
+    "patient_id": "S2012014-4504706",
+    "study_id": "S2012014-4504706",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/12/S2012014-4504706.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 26.46,
+    "gender": "0"
+  },
+  {
+    "patient_id": "S2012017-3836271",
+    "study_id": "S2012017-3836271",
+    "image_path": "gs://cxr-rait/cxr-demography-data/2020/12/S2012017-3836271.dcm",
+    "domain": "cxr_rait",
+    "label": 0,
+    "age": 17.02,
+    "gender": "0"
+  }
+]
